@@ -4,46 +4,42 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "posts")
+@Table(name = "post")
 @Data
 @NoArgsConstructor
 public class Post {
+
     @Id
     @Column(name = "id", updatable = false, nullable = false, unique = true)
     private Long id;
 
-    @Column(name = "postname")
-    private String postName;
+    @Column(name = "article")
+    private String article;
 
     @Lob
     @Column(name = "content", columnDefinition = "CLOB")
     private String content;
 
-    @ManyToOne()
-    @JoinColumn(name = "author_id", insertable = false, updatable = false)
-    @JsonIgnore
-    private AnonymousUser author;
+    @Column(name = "author_name")
+    private String authorName;
 
-    @Column(name = "author_id")
-    private Long authorId;
+    @JsonIgnore
+    @OneToMany(mappedBy = "comment")
+    private List<Comment> comments;
 
     @Column(name = "created_at", updatable = false)
     @CreationTimestamp
     private Date createdAt;
 
-    @Column(name = "updated_at", updatable = false)
-    @UpdateTimestamp
-    private Date updatedAt;
-
-    public Post(String postName, Long authorId, String content) {
-        this.postName = postName;
-        this.authorId = authorId;
+    public Post(String article, String content, String authorName) {
+        this.article = article;
         this.content = content;
+        this.authorName = authorName;
     }
 }
