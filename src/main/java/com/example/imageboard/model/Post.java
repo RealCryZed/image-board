@@ -30,7 +30,7 @@ public class Post {
     private String authorName;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "comment")
+    @OneToMany(mappedBy = "post")
     private List<Comment> comments;
 
     @Column(name = "created_at", updatable = false)

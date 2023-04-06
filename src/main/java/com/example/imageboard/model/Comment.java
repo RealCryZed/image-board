@@ -27,7 +27,7 @@ public class Comment {
     @JoinColumn(name = "post_id", referencedColumnName = "id")
     private Post post;
 
-    @Column(name = "post_id")
+    @Column(name = "post_id", insertable = false, updatable = false)
     private Long post_id;
 
     @Column(name = "created_at", updatable = false)
