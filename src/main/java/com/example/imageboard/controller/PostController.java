@@ -24,7 +24,7 @@ public class PostController {
     }
 
     @GetMapping("/{id}")
-    private Post findFileById(@PathVariable Long id) {
+    private Post findPostById(@PathVariable Long id) {
         Post post = postService.findById(id);
         log.info("Got a post with id={}", id);
         return post;
