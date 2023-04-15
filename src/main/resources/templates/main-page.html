@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en"
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
 	<title>OmGTUchan</title>
-	<link rel="stylesheet" type="text/css" href="styles/main-page-style.css">
-	<link type="image/x-icon" href="img/omgtu_logo_min.ico" rel="shortcut icon">
+	<link rel="stylesheet" type="text/css" th:href="@{styles/main-page-style.css}">
+	<link type="image/x-icon" th:href="@{img/omgtu_logo_min.ico}" rel="shortcut icon">
 </head>
 <body>
 	<div class="sidenav">
-		<a href="main-page.html" ><img class="sidebar-logo" src="img/omgtu_logo.png"></a>
+		<a href="main-page.html" ><img class="sidebar-logo" th:src="@{img/omgtu_logo.png}"></a>
 		<form>
   			<input type="text" placeholder="Искать здесь...">
   			<button type="submit"></button>
@@ -16,14 +18,14 @@
   		<a href="title-page.html">Title 1</a>
   		<a href="title-page.html">Title 2</a>
   		<a href="title-page.html">Title 3</a>
-  		<a href="entrance-page.html"><img class="entrance-icon" src="img/entrance_icon.png"></a>
+  		<a href="entrance-page.html"><img class="entrance-icon" th:src="@{img/entrance_icon.png}"></a>
   	</div>
   		<a href="entrance-page.html" class="entrance">ВХОД</a>
 	
 
 	<div class="main">
   		<div class="headbar">
-  			<a href="main-page.html"><img class="main-logo" src="img/omgtu_logo_min.png"></a>
+  			<a href="main-page.html"><img class="main-logo" th:src="@{img/omgtu_logo_min.png}"></a>
   		</div>
 
   		<div class="block-post">
@@ -37,8 +39,8 @@
   				</div>
   				<hr>
   				<div class="post-footer">
-  					<a href="#" data-tooltip="Пожаловаться"><img class="footer-icons" src="img/spam-icon.svg"></a>
-  					<a href="#" data-tooltip="Переслать"><img class="footer-icons" src="img/send-icon.svg"></a>
+  					<a href="#" data-tooltip="Пожаловаться"><img class="footer-icons" th:src="@{img/spam-icon.svg}"></a>
+  					<a href="#" data-tooltip="Переслать"><img class="footer-icons" th:src="@{img/send-icon.svg}"></a>
   				</div>
   			</div>
 
@@ -54,8 +56,8 @@
   				</div>
   				<hr>
   				<div class="post-footer">
-  					<a href="#" data-tooltip="Пожаловаться"><img class="footer-icons" src="img/spam-icon.svg"></a>
-  					<a href="#" data-tooltip="Переслать"><img class="footer-icons" src="img/send-icon.svg"></a>
+  					<a href="#" data-tooltip="Пожаловаться"><img class="footer-icons" th:src="@{img/spam-icon.svg}"></a>
+  					<a href="#" data-tooltip="Переслать"><img class="footer-icons" th:src="@{img/send-icon.svg}"></a>
   				</div>
   			</div>
   			
