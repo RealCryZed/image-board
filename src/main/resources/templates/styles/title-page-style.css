@@ -1,0 +1,223 @@
+body {
+    background-color: #f2f2f2;
+    margin: 0;
+}
+
+.post-main a {
+    text-decoration: none;
+}
+
+.post-messages a {
+    text-decoration: none;
+}
+
+.sidenav {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to top, #06C895, 10%, white);
+    overflow-x: hidden;
+    padding: 8px 0;
+    height: 100%;
+}
+
+
+.sidenav a {
+    padding: 6px 20px;
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+    display: block;
+}
+
+a:hover {
+    color: #06C895;
+}
+
+.sidebar-logo {
+	width: 200px;
+	padding: 10px 5px;
+
+}
+
+form {
+    position: relative;
+    width: 200px;
+    margin: 0 20px;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 185px;
+    height: 42px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 2px solid black;
+    border-radius: 14px;
+    outline: none;
+    background: transparent;
+    color: #666666;
+}
+
+input:focus {
+    border: 2px solid #06C895; 
+}
+
+.sidenav input:hover {
+    border: 2px solid #06C895; 
+}
+
+
+button {
+    position: absolute; 
+    top: 5px;
+    right: 0px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+button:before {
+  content: "\f002";
+  font-family: FontAwesome;
+  font-size: 20px;
+  color: black;
+}
+
+.entrance {
+    position: absolute;
+    left: 50px;
+    bottom: 35px;
+    margin: 0;
+    color: black;
+    font-size: 20px;
+    text-decoration: none;
+
+}
+
+.entrance-icon {
+    position: absolute;
+    left: 20px;
+    bottom: 50px;
+    width: 25px;
+}
+
+.main {
+    margin-left: 240px;
+    margin-top: 0px;
+    font-size: 28px; 
+    padding: 0px;
+    background-color: #f2f2f2;
+}
+
+.headbar {
+    width: 100%;
+    height: 100%;
+    background: #f2f2f2;
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.2);
+    margin: 0;
+    margin-bottom: 30px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.headbar-title {
+    text-align: center;
+    margin: 0 auto;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.post-main {
+    background-color: white;
+    box-shadow: inset 10px 10px 60px rgba(6,200,149,0.3);
+    margin-left: 30px;
+    height: 100%;
+    width: 1000px;
+    padding: 10px 15px 0px 15px;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.name-user {
+    font-size: 15px;
+    margin: 0;
+    color: #06C895;
+}
+
+.post-date {
+    margin: 0;
+    font-size: 15px;
+    color: #666666;
+}
+
+.post-body {
+    font-size: 20px;
+}
+
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100px;
+}
+
+.footer-icons {
+    width: 25px;
+}
+
+.post-footer a {
+    width: 40px;
+    height: 35px;
+}
+
+[data-tooltip]::after {
+    content: attr(data-tooltip);
+    font-size: 15px;
+    color: black;
+    border: 1px solid black;
+    background-color: white;
+    padding: 2px;
+    position: relative;
+    bottom: 15px;
+    right: 40px;
+}
+
+[data-tooltip]::after {
+    opacity: 0;
+}
+
+[data-tooltip]::after {
+    transition: 0.1s;
+}
+
+[data-tooltip]:hover::after {
+    opacity: 1;
+}
+
+.post-messages {
+    background-color: white;
+    box-shadow: inset 10px 10px 60px rgba(6,200,149,0.3);
+    margin-left: 70px;
+    margin-top: 20px;
+    height: 100%;
+    width: 1000px;
+    padding: 10px 15px 0px 15px;
+}
+
+.messages {
+    margin-left: 70px;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.missed-messages a {
+    color: color: #06C895;
+}
