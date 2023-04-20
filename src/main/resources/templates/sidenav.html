@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en"
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
 	<title>OmGTUchan</title>
@@ -8,17 +10,17 @@
 	<link type="image/x-icon" href="img/omgtu_logo_min.ico" rel="shortcut icon">
 </head>
 <body>
-	<div class="sidenav">
-		<a href="main-page.html" ><img class="sidebar-logo" src="img/omgtu_logo.png"></a>
+	<div th:fragment="sidenav" class="sidenav">
+		<a th:href="@{/}"><img class="sidebar-logo" src="img/omgtu_logo.png"></a>
 		<form>
   			<input type="text" placeholder="Искать здесь...">
   			<button type="submit"><img class="search-icon" src="img/search-icon.png"></button>
 		</form>
-  		<a href="title-page.html">Title 1</a>
-  		<a href="title-page.html">Title 2</a>
-  		<a href="title-page.html">Title 3</a>
-  		<a href="entrance-page.html"><img class="entrance-icon" src="img/entrance_icon.png"></a>
-  		<a href="entrance-page.html" class="entrance">ВХОД</a>
+		<a th:href="@{title-page/#}">Title 1</a>
+		<a th:href="@{title-page/#}">Title 2</a>
+		<a th:href="@{title-page/#}">Title 3</a>
+		<a th:href="@{login}"><img class="entrance-icon" src="img/entrance_icon.png"></a>
+		<a th:href="@{login}" class="entrance">ВХОД</a>
   	</div>				
 </body>
 </html>
