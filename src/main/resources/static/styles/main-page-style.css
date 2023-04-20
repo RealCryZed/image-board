@@ -12,92 +12,8 @@ a:hover {
     color: #06C895;
 }
 
-.sidenav {
-    width: 250px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: linear-gradient(to top, #06C895, 10%, white);
-    overflow-x: hidden;
-    padding: 8px 0;
-    height: 100%;
-}
-
-.sidenav a {
-    padding: 6px 20px;
-    text-decoration: none;
-    font-size: 25px;
-    display: block;
-}
-
-.sidebar-logo {
-	width: 200px;
-	padding: 10px 5px;
-
-}
-
-form {
-    position: relative;
-    width: 200px;
-    margin: 0 20px;
-    margin-bottom: 20px;
-}
-
-input {
-    width: 185px;
-    height: 42px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border: 2px solid black;
-    border-radius: 14px;
-    outline: none;
-    background: transparent;
-    color: #666666;
-}
-
-input:focus {
-    border: 2px solid #06C895; 
-}
-
-.sidenav input:hover {
-    border: 2px solid #06C895; 
-}
-
-
-button {
-    position: absolute; 
-    top: 5px;
-    right: 0px;
-    width: 40px;
-    height: 40px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-}
-
-button:before {
-  content: "\f002";
-  font-family: FontAwesome;
-  font-size: 20px;
-  color: black;
-}
-
-.entrance {
-    position: absolute;
-    left: 50px;
-    bottom: 35px;
-    margin: 0;
-    color: black;
-    font-size: 20px;
-    text-decoration: none;
-
-}
-
-.entrance-icon {
-    position: absolute;
-    left: 20px;
-    bottom: 50px;
-    width: 25px;
+hr {
+    margin-bottom: 7px;
 }
 
 .main {
@@ -108,30 +24,19 @@ button:before {
     background-color: #f2f2f2;
 }
 
-.headbar {
-    width: 100%;
-    height: 100%;
-    background: #f2f2f2;
-    box-shadow: inset 0 0 50px rgba(0,0,0,0.2);
-    margin: 0;
-    margin-bottom: 30px;
-    text-align: center;
-    padding-top: 15px;
-    padding-bottom: 5px;
-}
-
 .main-logo {
-    width: 30px;
+    height: 40px;
     margin: 0 auto;
 }
 
 .post-main {
     background-color: white;
-    box-shadow: inset 10px 10px 60px rgba(6,200,149,0.3);
-    margin-left: 30px;
+    margin-left: 40px;
     height: 100%;
     width: 1000px;
     padding: 10px 15px 0px 15px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1), inset 10px 10px 60px rgba(6,200,149,0.3); 
+     
 }
 
 .post-header {
@@ -142,18 +47,10 @@ button:before {
 .name-user {
     font-size: 15px;
     margin: 0;
-    color: #06C895;
+    color: #059670;
 }
 
-.post-date {
-    margin: 0;
-    font-size: 15px;
-    color: #666666;
-}
-
-.post-body {
-    font-size: 20px;
-}
+/*---------------------------------*/
 
 .post-footer {
     display: flex;
@@ -161,13 +58,19 @@ button:before {
     width: 100px;
 }
 
-.footer-icons {
-    width: 25px;
-}
-
-.post-footer a {
+.spam-button, .reply-btn {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 0;
+    height: 0;
+    cursor: pointer;
     width: 40px;
     height: 35px;
+}
+
+.footer-icons {
+    width: 25px;
 }
 
 [data-tooltip]::after {
@@ -178,8 +81,7 @@ button:before {
     background-color: white;
     padding: 2px;
     position: relative;
-    bottom: 15px;
-    right: 40px;
+    right: 35px;
 }
 
 [data-tooltip]::after {
@@ -194,9 +96,108 @@ button:before {
     opacity: 1;
 }
 
+.button-send:hover {
+    color: #ffffff;
+    background-color: #059670;
+}
+
+.reply-area {
+    background-color: white;
+}
+
+.reply-area-inside {
+    border: 1px solid #C0C0C0;
+    outline: none;
+    padding: 5px;
+}
+
+.reply-area-inside:hover {
+    border: 1px solid #06C895;
+}
+
+.reply-area-inside:focus {
+    border: 1px solid #06C895; 
+}
+
+.reply-input {
+  margin: 0 auto;
+  width: 100%;
+  min-height: 100px;
+  height: 100%;
+  font-size: 15px;
+  border: none;
+  resize: none;
+  text-align: left;
+  padding: 0;
+}
+
+.reply-input:focus {
+    border: none;
+    outline: none;
+}
+
+.reply-input:hover {
+    border: none;
+    outline: none;
+}
+
+.button-send {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    height: 30px;
+    width: 100px;
+    background-color: #06C895;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid #059670;
+    cursor: pointer;
+}
+
+.id-area {
+    resize: none;
+    font-size: 15px;
+    border: none; 
+    height: 20px;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    vertical-align: middle;
+    display: block;
+}
+
+.id-area:hover {
+    border: none;
+    outline: none;
+}
+
+.id-area:focus {
+    border: none;
+    outline: none;
+}
+
+.reply-form {
+    display: none;
+}
+
+.reply-form.show {
+    display: block;
+    margin-left: 50px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    width: 610px;
+    height: 100%;
+    padding: 15px 15px 0px 15px;
+    background-color: white;
+    border: 1px solid #C0C0C0;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+/*-----------------------------*/
+
 .post-messages {
     background-color: white;
-    box-shadow: inset 10px 10px 60px rgba(6,200,149,0.3);
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1), inset 10px 10px 60px rgba(6,200,149,0.3);
     margin-left: 70px;
     margin-top: 20px;
     height: 100%;
@@ -211,6 +212,22 @@ button:before {
     font-weight: 600;
 }
 
-.missed-messages a {
-    color: color: #06C895;
+.missed-messages a:hover {
+    color: #06C895;
 }
+
+hr {
+    height: 1px;
+    background-color: #ccc;
+    border: #666666;  
+}
+
+.hr-post {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+
+

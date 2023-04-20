@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<title>OmGTUchan</title>
 	<link rel="stylesheet" type="text/css" href="styles/title-page-style.css">
+	<link rel="stylesheet" type="text/css" href="styles/common-style.css">
 	<link type="image/x-icon" href="img/omgtu_logo_min.ico" rel="shortcut icon">
 </head>
 <body>
@@ -11,16 +12,15 @@
 		<a href="main-page.html" ><img class="sidebar-logo" src="img/omgtu_logo.png"></a>
 		<form>
   			<input type="text" placeholder="Искать здесь...">
-  			<button type="submit"></button>
+  			<button type="submit"><img class="search-icon" src="img/search-icon.png"></button>
 		</form>
   		<a href="title-page.html">Title 1</a>
   		<a href="title-page.html">Title 2</a>
   		<a href="title-page.html">Title 3</a>
   		<a href="entrance-page.html"><img class="entrance-icon" src="img/entrance_icon.png"></a>
+		<a href="entrance-page.html" class="entrance">ВХОД</a>
   	</div>
-  		<a href="entrance-page.html" class="entrance">ВХОД</a>
-	
-
+  
 	<div class="main">
   		<div class="headbar">
   			<p class="headbar-title">Title</p>
@@ -37,8 +37,17 @@
   				</div>
   				<hr>
   				<div class="post-footer">
-  					<a href="#" data-tooltip="Пожаловаться"><img class="footer-icons" src="img/spam-icon.svg"></a>
-  					<a href="#" data-tooltip="Переслать"><img class="footer-icons" src="img/send-icon.svg"></a>
+  					<div class="post-footer">
+
+  					<div class="comments"> 
+  						<div class="comment">
+  							<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="img/spam-icon.svg"></button>
+  							<button data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="img/send-icon.svg"></button>
+  							
+  							<div class="reply-form"></div>	
+  						</div>
+  					</div>
+  				</div>
   				</div>
   			</div>
 
@@ -54,13 +63,100 @@
   				</div>
   				<hr>
   				<div class="post-footer">
-  					<a href="#" data-tooltip="Пожаловаться"><img class="footer-icons" src="img/spam-icon.svg"></a>
-  					<a href="#" data-tooltip="Переслать"><img class="footer-icons" src="img/send-icon.svg"></a>
+  					<div class="comments"> 
+  						<div class="comment">
+  							<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="img/spam-icon.svg"></button>
+  							<button data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="img/send-icon.svg"></button>
+  							
+  							<div class="reply-form"></div>
+  						</div>
+  					</div>
   				</div>
   			</div>
-  			
   		</div>
-	</div>  
 
+  		<div class="comments-post"> 
+  			<div class="comment-post">
+  				<button class="reply-btn-post button-post" >
+  					<img class="img-message" src="img/write-message.svg">
+  					<label class="button-label">Ответить на пост</label>
+  				</button>
+  						
+  				<div class="reply-form-post"></div>
+  			</div>
+  		</div>
+	</div> 
+
+	
+	<script type="text/javascript">
+		
+		const buttonsReply = document.querySelectorAll('.reply-btn-post');
+
+		buttonsReply.forEach(btn => {
+			btn.addEventListener('click', () => {
+				const comment = btn.closest('.comment-post');
+				const replyForm = comment.querySelector('.reply-form-post');
+				const newForm = document.createElement('form');
+					newForm.innerHTML = `
+
+					<form class="reply-js-post">
+						<section class="reply-area">
+							<div class="reply-area-inside">
+								<textarea class="id-area" readonly>мой id</textarea>
+								<textarea class="reply-input"></textarea>
+							</div>
+						</section>
+					</form>
+
+					<button type="submit" class="button-send-post">Отправить</button>`;
+				
+				if (replyForm.classList.contains('show')) {
+					replyForm.classList.remove('show');
+          			const existedThing = replyForm.querySelector('form');
+          			existedThing.remove();
+				} else {
+					replyForm.appendChild(newForm);
+					replyForm.classList.add('show');	
+				}
+			});
+		});
+	</script> 
+
+<!-- ---------------------------------------------------------------------------- -->
+
+	<script type="text/javascript">
+		
+		const replyButtons = document.querySelectorAll('.reply-btn');
+
+		replyButtons.forEach(button => {
+			button.addEventListener('click', () => {
+				const comment = button.closest('.comment');
+				const replyForm = comment.querySelector('.reply-form');
+				const newForm = document.createElement('form');
+					newForm.innerHTML = `
+
+					<form class="reply-js">
+						<section class="reply-area">
+							<div class="reply-area-inside">
+								<textarea class="id-area" readonly>мой id</textarea>
+								<textarea class="id-area" readonly>>>id пользователя</textarea>
+								<textarea class="reply-input"></textarea>
+							</div>
+						</section>
+					</form>
+
+					<button type="submit" class="button-send">Отправить</button>`;
+				
+				if (replyForm.classList.contains('show')) {
+					replyForm.classList.remove('show');
+          			const existedThing = replyForm.querySelector('form');
+         			existedThing.remove();
+				} else {
+					replyForm.appendChild(newForm);
+					replyForm.classList.add('show');	
+				}
+			});
+		});
+	</script> 
 </body>
 </html>

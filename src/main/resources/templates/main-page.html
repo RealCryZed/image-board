@@ -1,31 +1,31 @@
 <!DOCTYPE html>
-<html lang="en"
-	  xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
 	<meta charset="utf-8">
 	<title>OmGTUchan</title>
-	<link rel="stylesheet" type="text/css" th:href="@{styles/main-page-style.css}">
-	<link type="image/x-icon" th:href="@{img/omgtu_logo_min.ico}" rel="shortcut icon">
+	<link rel="stylesheet" type="text/css" href="styles/main-page-style.css">
+	<link rel="stylesheet" type="text/css" href="styles/common-style.css">
+	<link rel="import" href="sidenav.html">
+	<link type="image/x-icon" href="img/omgtu_logo_min.ico" rel="shortcut icon">
+
+   </script>
 </head>
 <body>
-	<div class="sidenav">
-		<a href="main-page.html" ><img class="sidebar-logo" th:src="@{img/omgtu_logo.png}"></a>
+  	<div class="sidenav">
+		<a href="main-page.html" ><img class="sidebar-logo" src="img/omgtu_logo.png"></a>
 		<form>
   			<input type="text" placeholder="Искать здесь...">
-  			<button type="submit"></button>
+  			<button type="submit"><img class="search-icon" src="img/search-icon.png"></button>
 		</form>
   		<a href="title-page.html">Title 1</a>
   		<a href="title-page.html">Title 2</a>
   		<a href="title-page.html">Title 3</a>
-  		<a href="entrance-page.html"><img class="entrance-icon" th:src="@{img/entrance_icon.png}"></a>
-  	</div>
+  		<a href="entrance-page.html"><img class="entrance-icon" src="img/entrance_icon.png"></a>
   		<a href="entrance-page.html" class="entrance">ВХОД</a>
-	
-
+  	</div>			
 	<div class="main">
   		<div class="headbar">
-  			<a href="main-page.html"><img class="main-logo" th:src="@{img/omgtu_logo_min.png}"></a>
+  			<a href="main-page.html"><img class="main-logo" src="img/omgtu_logo_min.png"></a>
   		</div>
 
   		<div class="block-post">
@@ -39,30 +39,83 @@
   				</div>
   				<hr>
   				<div class="post-footer">
-  					<a href="#" data-tooltip="Пожаловаться"><img class="footer-icons" th:src="@{img/spam-icon.svg}"></a>
-  					<a href="#" data-tooltip="Переслать"><img class="footer-icons" th:src="@{img/send-icon.svg}"></a>
+
+  					<div class="comments"> 
+  						<div class="comment">
+  							<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="img/spam-icon.svg"></button>
+  							<button data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="img/send-icon.svg"></button>
+  							
+  							<div class="reply-form"></div>	
+  						</div>
+  					</div>
   				</div>
   			</div>
 
   			<p class="missed-messages">Пропущенные сообщения — <a href="title-page.html">Перейти к треду</a></p>
-
   			<div class="post-messages">
   				<div class="post-header"> 
   					<p class="name-user">Имя пользователя</p> 
   					<p class="post-date"><i>27.10.2022 16.15.46</i></p>					
   				</div>
   				<div class="post-body">
-  					<p>Не следует, однако, забывать о том, что постоянное информационно-техническое обеспечение нашей деятельности играет важную роль в формировании позиций, занимаемых участниками в отношении поставленных задач? Задача организации, в особенности же курс на социально-ориентированный национальный проект способствует подготовке и реализации экономической целесообразности принимаемых решений. Таким образом, консультация с профессионалами из IT требует от нас анализа модели развития!</p>
+  					<p>Не следует, однако, забывать о том, что постоянное информационно-техническое обеспечение нашей деятельности играет важную роль в формировании позиций, занимаемых участникамив отношении поставленных задач? Задача организации, в особенности же курс на социально-ориентированный национальный проект способствует подготовке и реализации экономическойцелесообразности принимаемых решений. Таким образом, консультация с профессионалами из IT требует от нас анализа модели развития!</p>
   				</div>
   				<hr>
   				<div class="post-footer">
-  					<a href="#" data-tooltip="Пожаловаться"><img class="footer-icons" th:src="@{img/spam-icon.svg}"></a>
-  					<a href="#" data-tooltip="Переслать"><img class="footer-icons" th:src="@{img/send-icon.svg}"></a>
+  					<div class="comments"> 
+  						<div class="comment">
+  							<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="img/spam-icon.svg"></button>
+  							<button data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="img/send-icon.svg"></button>
+  							
+  							<div class="reply-form"></div>
+  						</div>
+  					</div>
   				</div>
   			</div>
-  			
+  			<hr class="hr-post">	
   		</div>
-	</div>  
+
+
+  		
+	</div>
+
+  	<script type="text/javascript">
+		
+		const replyButtons = document.querySelectorAll('.reply-btn');
+
+		replyButtons.forEach(button => {
+			button.addEventListener('click', () => {
+				const comment = button.closest('.comment');
+				const replyForm = comment.querySelector('.reply-form');
+				const newForm = document.createElement('form');
+					newForm.innerHTML = `
+
+					<form class="reply-js">
+						<section class="reply-area">
+							<div class="reply-area-inside">
+								<textarea class="id-area" readonly>мой id</textarea>
+								<textarea class="id-area" readonly>>>id пользователя</textarea>
+								<textarea class="reply-input"></textarea>
+							</div>
+						</section>
+					</form>
+
+					<button type="submit" class="button-send">Отправить</button>`;
+				
+				if (replyForm.classList.contains('show')) {
+					replyForm.classList.remove('show');
+          const existedThing = replyForm.querySelector('form');
+          existedThing.remove();
+				} else {
+					replyForm.appendChild(newForm);
+					replyForm.classList.add('show');
+					
+				}
+			});
+		});
+	</script>
+
+
 
 </body>
 </html>
