@@ -1,0 +1,233 @@
+body {
+    background-color: #f2f2f2;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: #06C895;
+}
+
+hr {
+    margin-bottom: 7px;
+}
+
+.main {
+    margin-left: 240px;
+    margin-top: 0px;
+    font-size: 28px; 
+    padding: 0px;
+    background-color: #f2f2f2;
+}
+
+.main-logo {
+    height: 40px;
+    margin: 0 auto;
+}
+
+.post-main {
+    background-color: white;
+    margin-left: 40px;
+    height: 100%;
+    width: 1000px;
+    padding: 10px 15px 0px 15px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1), inset 10px 10px 60px rgba(6,200,149,0.3); 
+     
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.name-user {
+    font-size: 15px;
+    margin: 0;
+    color: #059670;
+}
+
+/*---------------------------------*/
+
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100px;
+}
+
+.spam-button, .reply-btn {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 0;
+    height: 0;
+    cursor: pointer;
+    width: 40px;
+    height: 35px;
+}
+
+.footer-icons {
+    width: 25px;
+}
+
+[data-tooltip]::after {
+    content: attr(data-tooltip);
+    font-size: 15px;
+    color: black;
+    border: 1px solid black;
+    background-color: white;
+    padding: 2px;
+    position: relative;
+    right: 35px;
+}
+
+[data-tooltip]::after {
+    opacity: 0;
+}
+
+[data-tooltip]::after {
+    transition: 0.1s;
+}
+
+[data-tooltip]:hover::after {
+    opacity: 1;
+}
+
+.button-send:hover {
+    color: #ffffff;
+    background-color: #059670;
+}
+
+.reply-area {
+    background-color: white;
+}
+
+.reply-area-inside {
+    border: 1px solid #C0C0C0;
+    outline: none;
+    padding: 5px;
+}
+
+.reply-area-inside:hover {
+    border: 1px solid #06C895;
+}
+
+.reply-area-inside:focus {
+    border: 1px solid #06C895; 
+}
+
+.reply-input {
+  margin: 0 auto;
+  width: 100%;
+  min-height: 100px;
+  height: 100%;
+  font-size: 15px;
+  border: none;
+  resize: none;
+  text-align: left;
+  padding: 0;
+}
+
+.reply-input:focus {
+    border: none;
+    outline: none;
+}
+
+.reply-input:hover {
+    border: none;
+    outline: none;
+}
+
+.button-send {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    height: 30px;
+    width: 100px;
+    background-color: #06C895;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid #059670;
+    cursor: pointer;
+}
+
+.id-area {
+    resize: none;
+    font-size: 15px;
+    border: none; 
+    height: 20px;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    vertical-align: middle;
+    display: block;
+}
+
+.id-area:hover {
+    border: none;
+    outline: none;
+}
+
+.id-area:focus {
+    border: none;
+    outline: none;
+}
+
+.reply-form {
+    display: none;
+}
+
+.reply-form.show {
+    display: block;
+    margin-left: 50px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    width: 610px;
+    height: 100%;
+    padding: 15px 15px 0px 15px;
+    background-color: white;
+    border: 1px solid #C0C0C0;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+/*-----------------------------*/
+
+.post-messages {
+    background-color: white;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1), inset 10px 10px 60px rgba(6,200,149,0.3);
+    margin-left: 70px;
+    margin-top: 20px;
+    height: 100%;
+    width: 1000px;
+    padding: 10px 15px 0px 15px;
+}
+
+.missed-messages {
+    margin-left: 70px;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.missed-messages a:hover {
+    color: #06C895;
+}
+
+hr {
+    height: 1px;
+    background-color: #ccc;
+    border: #666666;  
+}
+
+.hr-post {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+
+

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en"
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>OmGTUchan</title>
+	<link rel="stylesheet" type="text/css" href="styles/title-page-style.css">
+	<link rel="stylesheet" type="text/css" href="styles/common-style.css">
+	<link type="image/x-icon" href="img/omgtu_logo_min.ico" rel="shortcut icon">
+</head>
+<body>
+	<div th:include="sidenav :: sidenav" class="sidenav"></div>
+
+	<div class="main">
+  		<div class="headbar">
+  			<p class="headbar-title">Title</p>
+  		</div>
+
+  		<div class="block-post">
+  			<div class="post-main">
+  				<div class="post-header"> 
+  					<p class="name-user">Имя пользователя</p> 
+  					<p class="post-date"><i>27.10.2022 15.55.45</i></p>					
+  				</div>
+  				<div class="post-body">
+  					<p>Повседневная практика показывает, что выбранный нами инновационный путь играет важную роль в формировании форм воздействия? Значимость этих проблем настолько очевидна, что реализация намеченного плана развития обеспечивает широкому кругу специалистов участие в формировании экономической целесообразности принимаемых решений! Соображения высшего порядка, а также курс на социально-ориентированный национальный проект позволяет оценить значение модели развития.</p>
+  				</div>
+  				<hr>
+  				<div class="post-footer">
+  					<div class="post-footer">
+
+  					<div class="comments"> 
+  						<div class="comment">
+  							<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="img/spam-icon.svg"></button>
+  							<button data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="img/send-icon.svg"></button>
+  							
+  							<div class="reply-form"></div>	
+  						</div>
+  					</div>
+  				</div>
+  				</div>
+  			</div>
+
+  			<p class="messages">Сообщения:</p>
+
+  			<div class="post-messages">
+  				<div class="post-header"> 
+  					<p class="name-user">Имя пользователя</p> 
+  					<p class="post-date"><i>27.10.2022 16.15.46</i></p>					
+  				</div>
+  				<div class="post-body">
+  					<p>Не следует, однако, забывать о том, что постоянное информационно-техническое обеспечение нашей деятельности играет важную роль в формировании позиций, занимаемых участниками в отношении поставленных задач? Задача организации, в особенности же курс на социально-ориентированный национальный проект способствует подготовке и реализации экономической целесообразности принимаемых решений. Таким образом, консультация с профессионалами из IT требует от нас анализа модели развития!</p>
+  				</div>
+  				<hr>
+  				<div class="post-footer">
+  					<div class="comments"> 
+  						<div class="comment">
+  							<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="img/spam-icon.svg"></button>
+  							<button data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="img/send-icon.svg"></button>
+  							
+  							<div class="reply-form"></div>
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+
+  		<div class="comments-post"> 
+  			<div class="comment-post">
+  				<button class="reply-btn-post button-post" >
+  					<img class="img-message" src="img/write-message.svg">
+  					<label class="button-label">Ответить на пост</label>
+  				</button>
+  						
+  				<div class="reply-form-post"></div>
+  			</div>
+  		</div>
+	</div> 
+
+	
+	<script type="text/javascript">
+		
+		const buttonsReply = document.querySelectorAll('.reply-btn-post');
+
+		buttonsReply.forEach(btn => {
+			btn.addEventListener('click', () => {
+				const comment = btn.closest('.comment-post');
+				const replyForm = comment.querySelector('.reply-form-post');
+				const newForm = document.createElement('form');
+					newForm.innerHTML = `
+
+					<form class="reply-js-post">
+						<section class="reply-area">
+							<div class="reply-area-inside">
+								<textarea class="id-area" readonly>мой id</textarea>
+								<textarea class="reply-input"></textarea>
+							</div>
+						</section>
+					</form>
+
+					<button type="submit" class="button-send-post">Отправить</button>`;
+				
+				if (replyForm.classList.contains('show')) {
+					replyForm.classList.remove('show');
+          			const existedThing = replyForm.querySelector('form');
+          			existedThing.remove();
+				} else {
+					replyForm.appendChild(newForm);
+					replyForm.classList.add('show');	
+				}
+			});
+		});
+	</script> 
+
+<!-- ---------------------------------------------------------------------------- -->
+
+	<script type="text/javascript">
+		
+		const replyButtons = document.querySelectorAll('.reply-btn');
+
+		replyButtons.forEach(button => {
+			button.addEventListener('click', () => {
+				const comment = button.closest('.comment');
+				const replyForm = comment.querySelector('.reply-form');
+				const newForm = document.createElement('form');
+					newForm.innerHTML = `
+
+					<form class="reply-js">
+						<section class="reply-area">
+							<div class="reply-area-inside">
+								<textarea class="id-area" readonly>мой id</textarea>
+								<textarea class="id-area" readonly>>>id пользователя</textarea>
+								<textarea class="reply-input"></textarea>
+							</div>
+						</section>
+					</form>
+
+					<button type="submit" class="button-send">Отправить</button>`;
+				
+				if (replyForm.classList.contains('show')) {
+					replyForm.classList.remove('show');
+          			const existedThing = replyForm.querySelector('form');
+         			existedThing.remove();
+				} else {
+					replyForm.appendChild(newForm);
+					replyForm.classList.add('show');	
+				}
+			});
+		});
+	</script> 
+</body>
+</html>
