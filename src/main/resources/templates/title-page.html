@@ -5,26 +5,28 @@
 <head>
 	<meta charset="utf-8">
 	<title>OmGTUchan</title>
-	<link rel="stylesheet" type="text/css" href="styles/title-page-style.css">
-	<link rel="stylesheet" type="text/css" href="styles/common-style.css">
-	<link type="image/x-icon" href="img/omgtu_logo_min.ico" rel="shortcut icon">
+	<link rel="stylesheet" type="text/css" href="/../styles/title-page-style.css">
+	<link rel="stylesheet" type="text/css" href="/../styles/common-style.css">
+	<link type="image/x-icon" href="/../img/omgtu_logo_min.ico" rel="shortcut icon">
 </head>
 <body>
 	<div th:include="sidenav :: sidenav" class="sidenav"></div>
 
 	<div class="main">
   		<div class="headbar">
-  			<p class="headbar-title">Title</p>
+  			<p th:text="${post.getArticle()}" class="headbar-title"></p>
   		</div>
 
   		<div class="block-post">
   			<div class="post-main">
   				<div class="post-header"> 
-  					<p class="name-user">Имя пользователя</p> 
-  					<p class="post-date"><i>27.10.2022 15.55.45</i></p>					
+  					<p th:text="${post.getAuthorName()}" class="name-user"></p>
+  					<p th:text="${post.getCreatedAt()}" class="post-date"><i></i></p>
   				</div>
   				<div class="post-body">
-  					<p>Повседневная практика показывает, что выбранный нами инновационный путь играет важную роль в формировании форм воздействия? Значимость этих проблем настолько очевидна, что реализация намеченного плана развития обеспечивает широкому кругу специалистов участие в формировании экономической целесообразности принимаемых решений! Соображения высшего порядка, а также курс на социально-ориентированный национальный проект позволяет оценить значение модели развития.</p>
+					<p style="font-size: x-large; font-weight: bold;" th:text="${post.getArticle()}"></p>
+  					<p th:text="${post.getContent()}"></p>
+					<img class="post-body-image" th:src="'data:image/jpg;base64, ' + ${post.getBase64Image()}"/>
   				</div>
   				<hr>
   				<div class="post-footer">
@@ -32,8 +34,8 @@
 
   					<div class="comments"> 
   						<div class="comment">
-  							<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="img/spam-icon.svg"></button>
-  							<button data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="img/send-icon.svg"></button>
+  							<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="/../img/spam-icon.svg"></button>
+  							<button data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
   							
   							<div class="reply-form"></div>	
   						</div>
@@ -56,8 +58,8 @@
   				<div class="post-footer">
   					<div class="comments"> 
   						<div class="comment">
-  							<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="img/spam-icon.svg"></button>
-  							<button data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="img/send-icon.svg"></button>
+  							<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="/../img/spam-icon.svg"></button>
+  							<button data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
   							
   							<div class="reply-form"></div>
   						</div>
@@ -69,7 +71,7 @@
   		<div class="comments-post"> 
   			<div class="comment-post">
   				<button class="reply-btn-post button-post" >
-  					<img class="img-message" src="img/write-message.svg">
+  					<img class="img-message" src="/../img/write-message.svg">
   					<label class="button-label">Ответить на пост</label>
   				</button>
   						

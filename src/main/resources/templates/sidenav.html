@@ -6,15 +6,15 @@
 	<meta charset="utf-8">
 	<title>OmGTUchan</title>
 	
-	<link rel="stylesheet" type="text/css" href="styles/common-style.css">
-	<link type="image/x-icon" href="img/omgtu_logo_min.ico" rel="shortcut icon">
+	<link rel="stylesheet" type="text/css" href="/../styles/common-style.css">
+	<link type="image/x-icon" href="/../img/omgtu_logo_min.ico" rel="shortcut icon">
 </head>
 <body>
 	<div th:fragment="sidenav" class="sidenav">
-		<a th:href="@{/}"><img class="sidebar-logo" src="img/omgtu_logo.png"></a>
+		<a th:href="@{/}"><img class="sidebar-logo" src="/../img/omgtu_logo.png"></a>
 		<form>
   			<input type="text" placeholder="Искать здесь...">
-  			<button type="submit"><img class="search-icon" src="img/search-icon.png"></button>
+  			<button type="submit"><img class="search-icon" src="/../img/search-icon.png"></button>
 		</form>
 <!--		<div th:each="post : ${post}">-->
 <!--			<a th:href="@{'/title-page/' + ${post.id}}"></a>-->
@@ -23,7 +23,7 @@
 		<a th:href="@{title-page/#}">Title 2</a>
 		<a th:href="@{title-page/#}">Title 3</a>
 
-		<a th:href="@{login}"><img class="entrance-icon" src="img/entrance_icon.png"></a>
+		<a th:href="@{login}"><img class="entrance-icon" src="/../img/entrance_icon.png"></a>
 		<a th:href="@{login}" class="entrance">ВХОД</a>
   	</div>				
 </body>

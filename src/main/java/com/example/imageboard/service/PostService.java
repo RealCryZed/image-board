@@ -5,6 +5,7 @@ import com.example.imageboard.model.Post;
 import com.example.imageboard.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,8 +23,11 @@ public class PostService {
         return posts;
     }
 
+    @Transactional
     public Post findById(Long postId) {
-        return postRepository.getById(postId);
+        Post foundPost = postRepository.getById(postId);
+        foundPost.setBase64Image(ImageProcessor.getBase64Image(foundPost.getImage()));
+        return foundPost;
     }
 
     public Post findPostByArticle(String article) {

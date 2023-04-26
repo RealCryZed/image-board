@@ -5,17 +5,16 @@
 <head>
 	<meta charset="utf-8">
 	<title>OmGTUchan</title>
-	<link rel="stylesheet" type="text/css" href="styles/main-page-style.css">
-	<link rel="stylesheet" type="text/css" href="styles/common-style.css">
-	<link rel="import" href="sidenav.html">
-	<link type="image/x-icon" href="img/omgtu_logo_min.ico" rel="shortcut icon">
+	<link rel="stylesheet" type="text/css" href="/../styles/main-page-style.css">
+	<link rel="stylesheet" type="text/css" href="/../styles/common-style.css">
+	<link type="image/x-icon" href="/../img/omgtu_logo_min.ico" rel="shortcut icon">
 </head>
 <body>
 	<div th:include="sidenav :: sidenav" class="sidenav"></div>
 
 	<div class="main">
   		<div class="headbar">
-  			<a th:href="@{/}"><img class="main-logo" src="img/omgtu_logo_min.png"></a>
+  			<a th:href="@{/}"><img class="main-logo" src="/../img/omgtu_logo_min.png"></a>
   		</div>
 
   		<div class="block-post" th:each="post : ${posts}">
@@ -34,8 +33,8 @@
 
   					<div class="comments"> 
   						<div class="comment">
-  							<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="img/spam-icon.svg"></button>
-  							<button data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="img/send-icon.svg"></button>
+  							<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="/../img/spam-icon.svg"></button>
+  							<button data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
   							
   							<div class="reply-form"></div>	
   						</div>
@@ -56,8 +55,8 @@
   				<div class="post-footer">
   					<div class="comments">
   						<div class="comment">
-  							<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="img/spam-icon.svg"></button>
-  							<button data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="img/send-icon.svg"></button>
+  							<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="/../img/spam-icon.svg"></button>
+  							<button data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
 
   							<div class="reply-form"></div>
   						</div>

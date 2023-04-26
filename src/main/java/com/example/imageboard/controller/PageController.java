@@ -34,8 +34,11 @@ public class PageController {
     }
 
     @GetMapping("/title-page/{id}")
-    public ModelAndView getRegisterPage(ModelAndView modelAndView, @PathVariable Integer id) {
+    public ModelAndView getRegisterPage(ModelAndView modelAndView, @PathVariable Long id) {
         modelAndView.setViewName("title-page");
+
+        modelAndView.addObject("post", postService.findById(id));
+
         return modelAndView;
     }
 }
