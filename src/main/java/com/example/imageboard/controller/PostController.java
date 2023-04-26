@@ -1,6 +1,6 @@
 package com.example.imageboard.controller;
 
-import com.example.imageboard.Service.PostService;
+import com.example.imageboard.service.PostService;
 import com.example.imageboard.model.Post;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

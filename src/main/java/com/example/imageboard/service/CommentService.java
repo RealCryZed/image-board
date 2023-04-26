@@ -1,4 +1,4 @@
-package com.example.imageboard.Service;
+package com.example.imageboard.service;
 
 import com.example.imageboard.model.Comment;
 import com.example.imageboard.repository.CommentRepository;

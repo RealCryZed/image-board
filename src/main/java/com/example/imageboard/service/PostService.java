@@ -1,5 +1,6 @@
-package com.example.imageboard.Service;
+package com.example.imageboard.service;
 
+import com.example.imageboard.function.ImageProcessor;
 import com.example.imageboard.model.Post;
 import com.example.imageboard.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,11 @@ public class PostService {
     private PostRepository postRepository;
 
     public List<Post> findAll() {
-        return postRepository.findAll();
+        List<Post> posts = postRepository.findAll();
+        for (Post post : posts) {
+            post.setBase64Image(ImageProcessor.getBase64Image(post.getImage()));
+        }
+        return posts;
     }
 
     public Post findById(Long postId) {
