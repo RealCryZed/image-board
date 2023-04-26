@@ -27,6 +27,7 @@
   				<div class="post-body">
 					<p style="font-size: x-large; font-weight: bold;" th:text="${post.getArticle()}"></p>
   					<p th:text="${post.getContent()}"></p>
+					<img class="post-body-image" th:src="'data:image/jpg;base64, ' + ${post.getBase64Image()}"/>
   				</div>
   				<hr>
   				<div class="post-footer">
