@@ -24,7 +24,9 @@
   					<p th:text="${post.getCreatedAt()}" class="post-date"><i></i></p>
   				</div>
   				<div class="post-body">
-					<p style="font-size: x-large; font-weight: bold;" th:text="${post.getArticle()}"></p>
+					<a th:href="@{'/title-page/' + ${post.id}}" style="display: block; margin-block-start: 1em;
+					margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-size: x-large;
+					font-weight: bold;" th:text="${post.getArticle()}"></a>
   					<p th:text="${post.getContent()}"></p>
 					<img class="post-body-image" th:src="'data:image/jpg;base64, ' + ${post.getBase64Image()}"/>
   				</div>
