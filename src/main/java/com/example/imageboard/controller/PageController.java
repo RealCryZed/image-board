@@ -23,9 +23,11 @@ public class PageController {
 
     @GetMapping("/")
     public ModelAndView getMainPage(ModelAndView modelAndView) {
+        Comment futureComment = new Comment();
 
-        modelAndView.setViewName("main-page");
+        modelAndView.addObject("futureComment", futureComment);
         modelAndView.addObject("posts", postService.findAll());
+        modelAndView.setViewName("main-page");
         return modelAndView;
     }
 

@@ -24,6 +24,14 @@ public class CommentController {
         return modelAndView;
     }
 
+    @PostMapping("/home/title-page/{id}")
+    public ModelAndView addCommentFromHomePage(ModelAndView modelAndView, @PathVariable Long id, @ModelAttribute Comment comment) {
+        commentService.create(comment, id);
+
+        modelAndView.setViewName("redirect:/");
+        return modelAndView;
+    }
+
     @PostMapping("/title-page/{id}/reply/{nickname}")
     public ModelAndView addCommentReply(ModelAndView modelAndView, @PathVariable Long id, @ModelAttribute Comment comment,
                                         @PathVariable String nickname) {
@@ -31,6 +39,16 @@ public class CommentController {
         commentService.create(comment, id);
 
         modelAndView.setViewName("redirect:/title-page/" + id);
+        return modelAndView;
+    }
+
+    @PostMapping("/home/title-page/{id}/reply/{nickname}")
+    public ModelAndView addCommentReplyFromHomePage(ModelAndView modelAndView, @PathVariable Long id, @ModelAttribute Comment comment,
+                                        @PathVariable String nickname) {
+        comment.setReplyToNickname(nickname);
+        commentService.create(comment, id);
+
+        modelAndView.setViewName("redirect:/");
         return modelAndView;
     }
 }
