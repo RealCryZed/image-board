@@ -37,7 +37,7 @@ public class CommentService {
         Post post = postService.findById(postId);
         Comment tempComment = new Comment();
 
-        if (!comment.getReplyToNickname().isEmpty()) {
+        if (comment.getReplyToNickname() != null) {
             tempComment.setReplyToNickname(comment.getReplyToNickname().substring(0, comment.getReplyToNickname().length() - 1));
             tempComment.setContent(comment.getReplyToNickname() + ", " + comment.getContent());
         } else {

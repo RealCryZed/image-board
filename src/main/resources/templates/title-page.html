@@ -97,11 +97,10 @@
   				</button>
   						
   				<div class="reply-form-post">
-					<form class="reply-js-post">
+					<form method="post" th:action="@{'/title-page/' + ${post.id}}" th:object="${futureComment}" class="reply-js-post">
 						<section class="reply-area">
 							<div class="reply-area-inside">
-								<textarea class="id-area" readonly>мой id</textarea>
-								<textarea class="reply-input"></textarea>
+								<textarea th:field="*{content}" class="reply-input"></textarea>
 							</div>
 						</section>
 						<button type="submit" class="button-send-post">Отправить</button>
