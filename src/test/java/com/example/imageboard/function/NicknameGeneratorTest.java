@@ -18,7 +18,6 @@ class NicknameGeneratorTest {
     @Test
     void generateNickname() {
         NicknameGenerator nicknameGenerator = NicknameGenerator.Instance();
-        assertEquals(5000, nicknameGenerator.getWords().size());
 
         String generatedNickname = nicknameGenerator.generateNickname();
         System.out.println(generatedNickname);

@@ -38,12 +38,12 @@
   							<button id="comment0" onClick="reply_click(this.id)" data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
   							
   							<div id="comment0_form" class="reply-form">
-								<form class="reply-js">
+								<form method="post" th:action="@{'/title-page/' + ${post.id}}" th:object="${futureComment}" class="reply-js">
 									<section class="reply-area">
 										<div class="reply-area-inside">
-											<textarea class="id-area" readonly>мой id</textarea>
-											<textarea class="id-area" readonly>>>id пользователя</textarea>
-											<textarea class="reply-input"></textarea>
+<!--											<textarea class="id-area" readonly>мой id</textarea>-->
+<!--											<textarea class="id-area" readonly>>>id пользователя</textarea>-->
+											<textarea th:field="*{content}" class="reply-input"></textarea>
 										</div>
 									</section>
 									<button type="submit" class="button-send">Отправить</button>
@@ -58,69 +58,100 @@
   			<p class="messages-header">Сообщения:</p>
 
   			<div class="messages">
-				<div class="post-messages">
-					<div class="post-header">
-						<p class="name-user">Имя пользователя</p>
-						<p class="post-date"><i>27.10.2022 16.15.46</i></p>
-					</div>
-					<div class="post-body">
-						<p>Не следует, однако, забывать о том, что постоянное информационно-техническое обеспечение нашей деятельности играет важную роль в формировании позиций, занимаемых участниками в отношении поставленных задач? Задача организации, в особенности же курс на социально-ориентированный национальный проект способствует подготовке и реализации экономической целесообразности принимаемых решений. Таким образом, консультация с профессионалами из IT требует от нас анализа модели развития!</p>
-					</div>
-					<hr>
-					<div class="post-footer">
-						<div class="comments">
-							<div class="comment">
-								<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="/../img/spam-icon.svg"></button>
-								<button id="comment1" onClick="reply_click(this.id)"  data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
+                <div class="post-messages" th:each="comment : ${allComments}">
+                    <div class="post-header">
+                        <p class="name-user" th:text="${comment.getAuthor()}">Имя пользователя</p>
+                        <p class="post-date" th:text="${comment.getCreatedAt()}"><i>27.10.2022 16.15.46</i></p>
+                    </div>
+                    <div class="post-body" th:text="${comment.getContent()}">
+                        <p>Не следует, однако, забывать о том, что постоянное информационно-техническое обеспечение нашей деятельности играет важную роль в формировании позиций, занимаемых участниками в отношении поставленных задач? Задача организации, в особенности же курс на социально-ориентированный национальный проект способствует подготовке и реализации экономической целесообразности принимаемых решений. Таким образом, консультация с профессионалами из IT требует от нас анализа модели развития!</p>
+                    </div>
+                    <hr>
+                    <div class="post-footer">
+                        <div class="comments">
+                            <div class="comment">
+                                <button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="/../img/spam-icon.svg"></button>
+                                <button  th:id="'comment' + ${comment.getId()}" onClick="reply_click(this.id)"  data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
 
-								<div id="comment1_form" class="reply-form">
-									<form class="reply-js">
-										<section class="reply-area">
-											<div class="reply-area-inside">
-												<textarea class="id-area" readonly>мой id</textarea>
-												<textarea class="id-area" readonly>>>id пользователя</textarea>
-												<textarea class="reply-input"></textarea>
-											</div>
-										</section>
-										<button type="submit" class="button-send">Отправить</button>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+                                <div id="comment1_form" class="reply-form">
+                                    <form class="reply-js" method="post">
+                                        <section class="reply-area">
+                                            <div class="reply-area-inside">
+                                                <textarea class="id-area" readonly>мой id</textarea>
+                                                <textarea class="id-area" readonly>>>id пользователя</textarea>
+                                                <textarea class="reply-input"></textarea>
+                                            </div>
+                                        </section>
+                                        <button type="submit" class="button-send">Отправить</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--				<div class="post-messages">-->
+<!--					<div class="post-header">-->
+<!--						<p class="name-user">Имя пользователя</p>-->
+<!--						<p class="post-date"><i>27.10.2022 16.15.46</i></p>-->
+<!--					</div>-->
+<!--					<div class="post-body">-->
+<!--						<p>Не следует, однако, забывать о том, что постоянное информационно-техническое обеспечение нашей деятельности играет важную роль в формировании позиций, занимаемых участниками в отношении поставленных задач? Задача организации, в особенности же курс на социально-ориентированный национальный проект способствует подготовке и реализации экономической целесообразности принимаемых решений. Таким образом, консультация с профессионалами из IT требует от нас анализа модели развития!</p>-->
+<!--					</div>-->
+<!--					<hr>-->
+<!--					<div class="post-footer">-->
+<!--						<div class="comments">-->
+<!--							<div class="comment">-->
+<!--								<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="/../img/spam-icon.svg"></button>-->
+<!--								<button id="comment1" onClick="reply_click(this.id)"  data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>-->
 
-				<div class="post-messages">
-					<div class="post-header">
-						<p class="name-user">Имя пользователя</p>
-						<p class="post-date"><i>27.10.2022 16.15.46</i></p>
-					</div>
-					<div class="post-body">
-						<p>Просто пост ни о чем</p>
-					</div>
-					<hr>
-					<div class="post-footer">
-						<div class="comments">
-							<div class="comment">
-								<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="/../img/spam-icon.svg"></button>
-								<button id="comment2" onClick="reply_click(this.id)"  data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
+<!--								<div id="comment1_form" class="reply-form">-->
+<!--									<form class="reply-js">-->
+<!--										<section class="reply-area">-->
+<!--											<div class="reply-area-inside">-->
+<!--												<textarea class="id-area" readonly>мой id</textarea>-->
+<!--												<textarea class="id-area" readonly>>>id пользователя</textarea>-->
+<!--												<textarea class="reply-input"></textarea>-->
+<!--											</div>-->
+<!--										</section>-->
+<!--										<button type="submit" class="button-send">Отправить</button>-->
+<!--									</form>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
 
-								<div id="comment2_form" class="reply-form">
-									<form class="reply-js">
-										<section class="reply-area">
-											<div class="reply-area-inside">
-												<textarea class="id-area" readonly>мой id</textarea>
-												<textarea class="id-area" readonly>>>id пользователя</textarea>
-												<textarea class="reply-input"></textarea>
-											</div>
-										</section>
-										<button type="submit" class="button-send">Отправить</button>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+<!--				<div class="post-messages">-->
+<!--					<div class="post-header">-->
+<!--						<p class="name-user">Имя пользователя</p>-->
+<!--						<p class="post-date"><i>27.10.2022 16.15.46</i></p>-->
+<!--					</div>-->
+<!--					<div class="post-body">-->
+<!--						<p>Просто пост ни о чем</p>-->
+<!--					</div>-->
+<!--					<hr>-->
+<!--					<div class="post-footer">-->
+<!--						<div class="comments">-->
+<!--							<div class="comment">-->
+<!--								<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="/../img/spam-icon.svg"></button>-->
+<!--								<button id="comment2" onClick="reply_click(this.id)"  data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>-->
+
+<!--								<div id="comment2_form" class="reply-form">-->
+<!--									<form class="reply-js">-->
+<!--										<section class="reply-area">-->
+<!--											<div class="reply-area-inside">-->
+<!--												<textarea class="id-area" readonly>мой id</textarea>-->
+<!--												<textarea class="id-area" readonly>>>id пользователя</textarea>-->
+<!--												<textarea class="reply-input"></textarea>-->
+<!--											</div>-->
+<!--										</section>-->
+<!--										<button type="submit" class="button-send">Отправить</button>-->
+<!--									</form>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
 			</div>
   		</div>
 

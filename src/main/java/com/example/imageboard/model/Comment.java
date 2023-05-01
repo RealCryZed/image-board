@@ -26,6 +26,9 @@ public class Comment {
     @Column(name = "content")
     private String content;
 
+    @Column(name = "image")
+    private byte[] image;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id", referencedColumnName = "id")
     private Post post;
@@ -36,6 +39,18 @@ public class Comment {
     @Column(name = "created_at", updatable = false)
     @CreationTimestamp
     private Date createdAt;
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "id=" + id +
+                ", author='" + author + '\'' +
+                ", replyToNickname='" + replyToNickname + '\'' +
+                ", content='" + content + '\'' +
+                ", post_id=" + post_id +
+                ", createdAt=" + createdAt +
+                '}';
+    }
 
     public Comment(String author, String content, Long post_id) {
         this.author = author;

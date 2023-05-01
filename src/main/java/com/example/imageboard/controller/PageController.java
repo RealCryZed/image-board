@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 public class PageController {
 
@@ -40,11 +42,15 @@ public class PageController {
         modelAndView.setViewName("title-page");
 
         Post post = postService.findById(id);
-        Comment comment = new Comment();
-        comment.setPost(post);
-        comment.setPost_id(post.getId());
 
-        modelAndView.addObject("comment", comment);
+        Comment futureComment = new Comment();
+        futureComment.setPost(post);
+        futureComment.setPost_id(post.getId());
+
+        System.out.println(post.getComments().size());
+
+        modelAndView.addObject("futureComment", futureComment);
+        modelAndView.addObject("allComments", post.getComments());
         modelAndView.addObject("post", post);
 
         return modelAndView;
