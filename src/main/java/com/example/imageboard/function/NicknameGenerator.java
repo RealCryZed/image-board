@@ -18,7 +18,7 @@ public class NicknameGenerator {
     private static NicknameGenerator instance = null;
     private final String FILENAME = "words.csv";
 
-    private List<String> words;
+    private static List<String> words;
 
     protected NicknameGenerator() {
         this.words = getWordsFromFile();
@@ -62,7 +62,7 @@ public class NicknameGenerator {
         return listOfWords;
     }
 
-    public String generateNickname() {
+    public static String generateNickname() {
         String nickname;
         StringBuilder stringBuilder = new StringBuilder();
         Random random = new Random();

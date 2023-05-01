@@ -20,6 +20,9 @@ public class Comment {
     @Column(name = "author")
     private String author;
 
+    @Column(name = "reply_to")
+    private String replyToNickname;
+
     @Column(name = "content")
     private String content;
 
