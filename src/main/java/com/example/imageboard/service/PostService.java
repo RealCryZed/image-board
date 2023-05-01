@@ -32,7 +32,6 @@ public class PostService {
                 list.add(i, list.remove(j));
             }
             post.setComments(list);
-            System.out.println(post.getComments());
         }
         return posts;
     }
