@@ -35,37 +35,58 @@
   					<div class="comments"> 
   						<div class="comment">
   							<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="/../img/spam-icon.svg"></button>
-  							<button data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
+  							<button id="comment0" onClick="reply_click(this.id)" data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
   							
-  							<div class="reply-form"></div>	
+  							<div id="comment0_form" class="reply-form">
+								<form method="post" th:action="@{'/title-page/' + ${post.id}}" th:object="${futureComment}" class="reply-js">
+									<section class="reply-area">
+										<div class="reply-area-inside">
+											<textarea th:field="*{content}" class="reply-input" placeholder="Ваш текст"></textarea>
+										</div>
+									</section>
+									<button type="submit" class="button-send">Отправить</button>
+								</form>
+							</div>
   						</div>
   					</div>
   				</div>
   				</div>
   			</div>
 
-  			<p class="messages">Сообщения:</p>
+  			<p class="messages-header">Сообщения:</p>
 
-  			<div class="post-messages">
-  				<div class="post-header"> 
-  					<p class="name-user">Имя пользователя</p> 
-  					<p class="post-date"><i>27.10.2022 16.15.46</i></p>					
-  				</div>
-  				<div class="post-body">
-  					<p>Не следует, однако, забывать о том, что постоянное информационно-техническое обеспечение нашей деятельности играет важную роль в формировании позиций, занимаемых участниками в отношении поставленных задач? Задача организации, в особенности же курс на социально-ориентированный национальный проект способствует подготовке и реализации экономической целесообразности принимаемых решений. Таким образом, консультация с профессионалами из IT требует от нас анализа модели развития!</p>
-  				</div>
-  				<hr>
-  				<div class="post-footer">
-  					<div class="comments"> 
-  						<div class="comment">
-  							<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="/../img/spam-icon.svg"></button>
-  							<button data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
-  							
-  							<div class="reply-form"></div>
-  						</div>
-  					</div>
-  				</div>
-  			</div>
+  			<div class="messages">
+                <div class="post-messages" th:each="comment : ${allComments}">
+                    <div class="post-header">
+                        <p class="name-user" th:text="${comment.getAuthor()}">Имя пользователя</p>
+                        <p class="post-date" th:text="${comment.getCreatedAt()}"><i>27.10.2022 16.15.46</i></p>
+                    </div>
+                    <div class="post-body">
+                        <p th:text="${comment.getContent()}">Не следует, однако, забывать о том, что постоянное информационно-техническое обеспечение нашей деятельности играет важную роль в формировании позиций, занимаемых участниками в отношении поставленных задач? Задача организации, в особенности же курс на социально-ориентированный национальный проект способствует подготовке и реализации экономической целесообразности принимаемых решений. Таким образом, консультация с профессионалами из IT требует от нас анализа модели развития!</p>
+                    </div>
+                    <hr>
+                    <div class="post-footer">
+                        <div class="comments">
+                            <div class="comment">
+                                <button data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="/../img/spam-icon.svg"></button>
+                                <button th:id="'comment' + ${comment.getId()}" onClick="reply_click(this.id)"  data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
+
+                                <div class="reply-form">
+                                    <form method="post" th:action="@{'/title-page/' + ${post.id} + '/reply/' + ${comment.getAuthor()}}" th:object="${futureComment}" class="reply-js">
+                                        <section class="reply-area">
+                                            <div class="reply-area-inside">
+                                                <textarea th:text="${comment.getAuthor()} + ','" class="id-area" readonly>>>id пользователя</textarea>
+                                                <textarea th:field="*{content}" class="reply-input"></textarea>
+                                            </div>
+                                        </section>
+                                        <button type="submit" class="button-send">Отправить</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
   		</div>
 
   		<div class="comments-post"> 
@@ -75,81 +96,55 @@
   					<label class="button-label">Ответить на пост</label>
   				</button>
   						
-  				<div class="reply-form-post"></div>
+  				<div class="reply-form-post">
+					<form method="post" th:action="@{'/title-page/' + ${post.id}}" th:object="${futureComment}" class="reply-js-post">
+						<section class="reply-area">
+							<div class="reply-area-inside">
+								<textarea th:field="*{content}" class="reply-input"></textarea>
+							</div>
+						</section>
+						<button type="submit" class="button-send-post">Отправить</button>
+					</form>
+				</div>
   			</div>
   		</div>
-	</div> 
+	</div>
+		<script type="text/javascript">
 
-	
-	<script type="text/javascript">
-		
 		const buttonsReply = document.querySelectorAll('.reply-btn-post');
 
 		buttonsReply.forEach(btn => {
 			btn.addEventListener('click', () => {
 				const comment = btn.closest('.comment-post');
 				const replyForm = comment.querySelector('.reply-form-post');
-				const newForm = document.createElement('form');
-					newForm.innerHTML = `
 
-					<form class="reply-js-post">
-						<section class="reply-area">
-							<div class="reply-area-inside">
-								<textarea class="id-area" readonly>мой id</textarea>
-								<textarea class="reply-input"></textarea>
-							</div>
-						</section>
-					</form>
-
-					<button type="submit" class="button-send-post">Отправить</button>`;
-				
 				if (replyForm.classList.contains('show')) {
 					replyForm.classList.remove('show');
-          			const existedThing = replyForm.querySelector('form');
-          			existedThing.remove();
 				} else {
-					replyForm.appendChild(newForm);
-					replyForm.classList.add('show');	
+					replyForm.classList.add('show');
 				}
 			});
 		});
-	</script> 
+	</script>
 
 <!-- ---------------------------------------------------------------------------- -->
 
 	<script type="text/javascript">
-		
+
 		const replyButtons = document.querySelectorAll('.reply-btn');
 
 		replyButtons.forEach(button => {
 			button.addEventListener('click', () => {
 				const comment = button.closest('.comment');
 				const replyForm = comment.querySelector('.reply-form');
-				const newForm = document.createElement('form');
-					newForm.innerHTML = `
 
-					<form class="reply-js">
-						<section class="reply-area">
-							<div class="reply-area-inside">
-								<textarea class="id-area" readonly>мой id</textarea>
-								<textarea class="id-area" readonly>>>id пользователя</textarea>
-								<textarea class="reply-input"></textarea>
-							</div>
-						</section>
-					</form>
-
-					<button type="submit" class="button-send">Отправить</button>`;
-				
 				if (replyForm.classList.contains('show')) {
 					replyForm.classList.remove('show');
-          			const existedThing = replyForm.querySelector('form');
-         			existedThing.remove();
 				} else {
-					replyForm.appendChild(newForm);
-					replyForm.classList.add('show');	
+					replyForm.classList.add('show');
 				}
 			});
 		});
-	</script> 
+	</script>
 </body>
 </html>

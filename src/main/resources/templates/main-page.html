@@ -24,7 +24,9 @@
   					<p th:text="${post.getCreatedAt()}" class="post-date"><i></i></p>
   				</div>
   				<div class="post-body">
-					<p style="font-size: x-large; font-weight: bold;" th:text="${post.getArticle()}"></p>
+					<a th:href="@{'/title-page/' + ${post.id}}" style="display: block; margin-block-start: 1em;
+					margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-size: x-large;
+					font-weight: bold;" th:text="${post.getArticle()}"></a>
   					<p th:text="${post.getContent()}"></p>
 					<img class="post-body-image" th:src="'data:image/jpg;base64, ' + ${post.getBase64Image()}"/>
   				</div>
@@ -35,21 +37,30 @@
   						<div class="comment">
   							<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="/../img/spam-icon.svg"></button>
   							<button data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
-  							
-  							<div class="reply-form"></div>	
+
+							<div id="comment0_form" class="reply-form">
+								<form method="post" th:action="@{'/home/title-page/' + ${post.id}}" th:object="${futureComment}" class="reply-js">
+									<section class="reply-area">
+										<div class="reply-area-inside">
+											<textarea th:field="*{content}" class="reply-input"></textarea>
+										</div>
+									</section>
+									<button type="submit" class="button-send">Отправить</button>
+								</form>
+							</div>
   						</div>
   					</div>
   				</div>
   			</div>
 
   			<p class="missed-messages">Последние сообщения — <a th:href="@{'/title-page/' + ${post.id}}">Перейти к треду</a></p>
-  			<div class="post-messages">
+  			<div class="post-messages" th:each="comment : ${post.getComments()}">
   				<div class="post-header">
-  					<p class="name-user">Имя пользователя</p>
-  					<p class="post-date"><i>27.10.2022 16.15.46</i></p>
+  					<p th:text="${comment.getAuthor()}" class="name-user">Имя пользователя</p>
+  					<p th:text="${comment.getCreatedAt()}" class="post-date"><i>27.10.2022 16.15.46</i></p>
   				</div>
   				<div class="post-body">
-  					<p>Не следует, однако, забывать о том, что постоянное информационно-техническое обеспечение нашей деятельности играет важную роль в формировании позиций, занимаемых участникамив отношении поставленных задач? Задача организации, в особенности же курс на социально-ориентированный национальный проект способствует подготовке и реализации экономическойцелесообразности принимаемых решений. Таким образом, консультация с профессионалами из IT требует от нас анализа модели развития!</p>
+  					<p th:text="${comment.getContent()}">Не следует, однако, забывать о том, что постоянное информационно-техническое обеспечение нашей деятельности играет важную роль в формировании позиций, занимаемых участникамив отношении поставленных задач? Задача организации, в особенности же курс на социально-ориентированный национальный проект способствует подготовке и реализации экономическойцелесообразности принимаемых решений. Таким образом, консультация с профессионалами из IT требует от нас анализа модели развития!</p>
   				</div>
   				<hr>
   				<div class="post-footer">
@@ -58,7 +69,17 @@
   							<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="/../img/spam-icon.svg"></button>
   							<button data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
 
-  							<div class="reply-form"></div>
+							<div class="reply-form">
+								<form method="post" th:action="@{'/home/title-page/' + ${post.id} + '/reply/' + ${comment.getAuthor()}}" th:object="${futureComment}" class="reply-js">
+									<section class="reply-area">
+										<div class="reply-area-inside">
+                                            <textarea th:text="${comment.getAuthor()} + ','" class="id-area" readonly>>>id пользователя</textarea>
+                                            <textarea th:field="*{content}" class="reply-input"></textarea>
+										</div>
+									</section>
+									<button type="submit" class="button-send">Отправить</button>
+								</form>
+							</div>
   						</div>
   					</div>
   				</div>
@@ -72,35 +93,64 @@
 
   	<script type="text/javascript">
 		
+		// const replyButtons = document.querySelectorAll('.reply-btn');
+		//
+		// replyButtons.forEach(button => {
+		// 	button.addEventListener('click', () => {
+		// 		const comment = button.closest('.comment');
+		// 		const replyForm = comment.querySelector('.reply-form');
+		// 		const newForm = document.createElement('form');
+		// 			newForm.innerHTML = `
+		//
+		// 			<form class="reply-js">
+		// 				<section class="reply-area">
+		// 					<div class="reply-area-inside">
+		// 						<textarea class="id-area" readonly>мой id</textarea>
+		// 						<textarea class="id-area" readonly>>>id пользователя</textarea>
+		// 						<textarea class="reply-input"></textarea>
+		// 					</div>
+		// 				</section>
+		// 				<button type="submit" class="button-send">Отправить</button>
+		// 			</form>`;
+		//
+		// 		if (replyForm.classList.contains('show')) {
+		// 			replyForm.classList.remove('show');
+        //   const existedThing = replyForm.querySelector('form');
+        //   existedThing.remove();
+		// 		} else {
+		// 			replyForm.appendChild(newForm);
+		// 			replyForm.classList.add('show');
+		//
+		// 		}
+		// 	});
+		// });
+
 		const replyButtons = document.querySelectorAll('.reply-btn');
 
 		replyButtons.forEach(button => {
 			button.addEventListener('click', () => {
 				const comment = button.closest('.comment');
 				const replyForm = comment.querySelector('.reply-form');
-				const newForm = document.createElement('form');
-					newForm.innerHTML = `
+				// const newForm = document.createElement('form');
+				// newForm.innerHTML = `
+				// 	<form class="reply-js">
+				// 		<section class="reply-area">
+				// 			<div class="reply-area-inside">
+				// 				<textarea class="id-area" readonly>мой id</textarea>
+				// 				<textarea class="id-area" readonly>>>id пользователя</textarea>
+				// 				<textarea class="reply-input"></textarea>
+				// 			</div>
+				// 		</section>
+				// 	</form>
+				// 	<button type="submit" class="button-send">Отправить</button>`;
 
-					<form class="reply-js">
-						<section class="reply-area">
-							<div class="reply-area-inside">
-								<textarea class="id-area" readonly>мой id</textarea>
-								<textarea class="id-area" readonly>>>id пользователя</textarea>
-								<textarea class="reply-input"></textarea>
-							</div>
-						</section>
-					</form>
-
-					<button type="submit" class="button-send">Отправить</button>`;
-				
 				if (replyForm.classList.contains('show')) {
 					replyForm.classList.remove('show');
-          const existedThing = replyForm.querySelector('form');
-          existedThing.remove();
+					// const existedThing = replyForm.querySelector('form');
+					// existedThing.remove();
 				} else {
-					replyForm.appendChild(newForm);
+					// replyForm.appendChild(newForm);
 					replyForm.classList.add('show');
-					
 				}
 			});
 		});

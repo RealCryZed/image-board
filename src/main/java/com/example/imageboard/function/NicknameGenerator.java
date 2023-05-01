@@ -24,10 +24,6 @@ public class NicknameGenerator {
         this.words = getWordsFromFile();
     }
 
-    public List<String> getWords() {
-        return words;
-    }
-
     /**
      * Проверяет, создана ли instance
      * @return новую instance, или уже созданную ранее

@@ -38,13 +38,24 @@ public class Post {
     @Column(name = "author_name")
     private String authorName;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post",
+            cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Comment> comments;
 
     @Column(name = "created_at", updatable = false)
     @CreationTimestamp
     private Date createdAt;
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id=" + id +
+                ", article='" + article + '\'' +
+                ", content='" + content + '\'' +
+                ", authorName='" + authorName + '\'' +
+                ", createdAt=" + createdAt +
+                '}';
+    }
 
     public Post(String article, String content, String authorName) {
         this.article = article;
