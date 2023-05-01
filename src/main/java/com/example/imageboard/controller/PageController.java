@@ -43,18 +43,13 @@ public class PageController {
 
     @GetMapping("/title-page/{id}")
     public ModelAndView getRegisterPage(ModelAndView modelAndView, @PathVariable Long id) {
-        modelAndView.setViewName("title-page");
-
         Post post = postService.findById(id);
-        List<Comment> allComments = commentService.findAllCommentsByPostId(id);
-
         Comment futureComment = new Comment();
 
-        System.out.println(post.getComments().size());
-
         modelAndView.addObject("futureComment", futureComment);
-        modelAndView.addObject("allComments", allComments);
+        modelAndView.addObject("allComments", post.getComments());
         modelAndView.addObject("post", post);
+        modelAndView.setViewName("title-page");
 
         return modelAndView;
     }

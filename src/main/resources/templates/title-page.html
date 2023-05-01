@@ -43,7 +43,7 @@
 										<div class="reply-area-inside">
 <!--											<textarea class="id-area" readonly>мой id</textarea>-->
 <!--											<textarea class="id-area" readonly>>>id пользователя</textarea>-->
-											<textarea th:field="*{content}" class="reply-input"></textarea>
+											<textarea th:field="*{content}" class="reply-input" placeholder="Ваш текст"></textarea>
 										</div>
 									</section>
 									<button type="submit" class="button-send">Отправить</button>
@@ -63,8 +63,8 @@
                         <p class="name-user" th:text="${comment.getAuthor()}">Имя пользователя</p>
                         <p class="post-date" th:text="${comment.getCreatedAt()}"><i>27.10.2022 16.15.46</i></p>
                     </div>
-                    <div class="post-body" th:text="${comment.getContent()}">
-                        <p>Не следует, однако, забывать о том, что постоянное информационно-техническое обеспечение нашей деятельности играет важную роль в формировании позиций, занимаемых участниками в отношении поставленных задач? Задача организации, в особенности же курс на социально-ориентированный национальный проект способствует подготовке и реализации экономической целесообразности принимаемых решений. Таким образом, консультация с профессионалами из IT требует от нас анализа модели развития!</p>
+                    <div class="post-body">
+                        <p th:text="${comment.getContent()}">Не следует, однако, забывать о том, что постоянное информационно-техническое обеспечение нашей деятельности играет важную роль в формировании позиций, занимаемых участниками в отношении поставленных задач? Задача организации, в особенности же курс на социально-ориентированный национальный проект способствует подготовке и реализации экономической целесообразности принимаемых решений. Таким образом, консультация с профессионалами из IT требует от нас анализа модели развития!</p>
                     </div>
                     <hr>
                     <div class="post-footer">
@@ -73,13 +73,13 @@
                                 <button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="/../img/spam-icon.svg"></button>
                                 <button  th:id="'comment' + ${comment.getId()}" onClick="reply_click(this.id)"  data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
 
-                                <div id="comment1_form" class="reply-form">
-                                    <form class="reply-js" method="post">
+                                <div class="reply-form">
+                                    <form method="post" th:action="@{'/title-page/' + ${post.id} + '/reply/' + ${comment.getAuthor()}}" th:object="${futureComment}" class="reply-js">
                                         <section class="reply-area">
                                             <div class="reply-area-inside">
-                                                <textarea class="id-area" readonly>мой id</textarea>
-                                                <textarea class="id-area" readonly>>>id пользователя</textarea>
-                                                <textarea class="reply-input"></textarea>
+<!--                                                <textarea class="id-area" readonly>мой id</textarea>-->
+                                                <textarea th:text="${comment.getAuthor()} + ','" class="id-area" readonly>>>id пользователя</textarea>
+                                                <textarea th:field="*{content}" class="reply-input"></textarea>
                                             </div>
                                         </section>
                                         <button type="submit" class="button-send">Отправить</button>

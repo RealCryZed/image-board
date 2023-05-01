@@ -1,6 +1,7 @@
 package com.example.imageboard.controller;
 
 import com.example.imageboard.model.Comment;
+import com.example.imageboard.model.Post;
 import com.example.imageboard.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,16 @@ public class CommentController {
 
     @PostMapping("/title-page/{id}")
     public ModelAndView addComment(ModelAndView modelAndView, @PathVariable Long id, @ModelAttribute Comment comment) {
+        commentService.create(comment, id);
+
+        modelAndView.setViewName("redirect:/title-page/" + id);
+        return modelAndView;
+    }
+
+    @PostMapping("/title-page/{id}/reply/{nickname}")
+    public ModelAndView addCommentReply(ModelAndView modelAndView, @PathVariable Long id, @ModelAttribute Comment comment,
+                                        @PathVariable String nickname) {
+        comment.setReplyToNickname(nickname);
         commentService.create(comment, id);
 
         modelAndView.setViewName("redirect:/title-page/" + id);

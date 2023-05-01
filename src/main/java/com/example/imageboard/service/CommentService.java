@@ -37,11 +37,16 @@ public class CommentService {
         Post post = postService.findById(postId);
         Comment tempComment = new Comment();
 
+        if (!comment.getReplyToNickname().isEmpty()) {
+            tempComment.setReplyToNickname(comment.getReplyToNickname().substring(0, comment.getReplyToNickname().length() - 1));
+            tempComment.setContent(comment.getReplyToNickname() + ", " + comment.getContent());
+        } else {
+            tempComment.setContent(comment.getContent());
+        }
+
         tempComment.setPost(post);
         tempComment.setImage(comment.getImage());
-        tempComment.setReplyToNickname(comment.getReplyToNickname());
         tempComment.setPost_id(post.getId());
-        tempComment.setContent(comment.getContent());
         tempComment.setAuthor(nicknameGeneratorService.generateNickname());
         log.info("Generated nickname: " + tempComment.getAuthor());
         log.info("Added new Comment " + tempComment);
