@@ -42,6 +42,7 @@ public class CommentService {
     }
 
     public Comment create(Comment comment, Long postId) {
+        if (comment.getContent().isEmpty() && comment.getFile().isEmpty()) return null;
         Post post = postService.findById(postId);
         Comment tempComment = new Comment();
 
