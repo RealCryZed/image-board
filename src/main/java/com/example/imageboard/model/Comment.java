@@ -3,8 +3,10 @@ package com.example.imageboard.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import java.io.File;
 import java.util.Date;
 
 @Data
@@ -28,8 +30,15 @@ public class Comment {
     @Column(name = "content")
     private String content;
 
+    @Transient
+    private MultipartFile file;
+
     @Column(name = "image")
     private byte[] image;
+
+    @Column(name = "base64Image")
+    @Transient
+    private String base64Image;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id", referencedColumnName = "id")
@@ -49,6 +58,7 @@ public class Comment {
                 ", author='" + author + '\'' +
                 ", replyToNickname='" + replyToNickname + '\'' +
                 ", content='" + content + '\'' +
+                ", base64Image='" + base64Image + '\'' +
                 ", post_id=" + post_id +
                 ", createdAt=" + createdAt +
                 '}';

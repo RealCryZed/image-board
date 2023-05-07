@@ -111,6 +111,11 @@ a {
     color: #666666;
 }
 
+.comment-body-image {
+    max-width: 500px;
+    max-height: 500px;
+}
+
 .headbar {
     width: 100%;
     height: 40px;
