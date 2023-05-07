@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.Arrays;
 import java.util.Date;
 
 @Data
@@ -58,6 +59,7 @@ public class Comment {
                 ", author='" + author + '\'' +
                 ", replyToNickname='" + replyToNickname + '\'' +
                 ", content='" + content + '\'' +
+                ", byte[]='" + Arrays.toString(image) + '\'' +
                 ", base64Image='" + base64Image + '\'' +
                 ", post_id=" + post_id +
                 ", createdAt=" + createdAt +

@@ -64,7 +64,7 @@
   				</div>
   				<div class="post-body">
   					<p th:text="${comment.getContent()}"></p>
-					<div th:if="${!comment.base64Image.isEmpty()}">
+					<div th:if="${comment.base64Image} != null">
 						<img class="comment-body-image" th:src="'data:image/jpg;base64, ' + ${comment.getBase64Image()}"/>
 					</div>
 				</div>

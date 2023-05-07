@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -65,7 +66,6 @@ public class CommentService {
         tempComment.setPost(post);
         tempComment.setPost_id(post.getId());
         tempComment.setAuthor(nicknameGeneratorService.generateNickname());
-        log.info("Added new Comment " + tempComment);
         return commentRepository.save(tempComment);
     }
 
