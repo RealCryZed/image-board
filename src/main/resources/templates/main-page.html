@@ -41,7 +41,7 @@
   							<button data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
 
 							<div id="comment0_form" class="reply-form">
-								<form method="post" th:action="@{'/home/title-page/' + ${post.id}}" th:object="${futureComment}" class="reply-js">
+								<form method="post" th:action="@{'/home/title-page/' + ${post.id}}" th:object="${futureComment}" enctype="multipart/form-data" class="reply-js">
 									<section class="reply-area">
 										<div class="reply-area-inside">
 											<textarea th:field="*{content}" class="reply-input"></textarea>
@@ -76,7 +76,7 @@
   							<button data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
 
 							<div class="reply-form">
-								<form method="post" th:action="@{'/home/title-page/' + ${post.id} + '/reply/' + ${comment.getAuthor()}}" th:object="${futureComment}" class="reply-js">
+								<form method="post" th:action="@{'/home/title-page/' + ${post.id} + '/reply/' + ${comment.getAuthor()}}" th:object="${futureComment}" enctype="multipart/form-data" class="reply-js">
 									<section class="reply-area">
 										<div class="reply-area-inside">
                                             <textarea th:text="${comment.getAuthor()} + ','" class="id-area" readonly>>>id пользователя</textarea>
