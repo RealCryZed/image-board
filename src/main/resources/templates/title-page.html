@@ -38,13 +38,14 @@
   							<button id="comment0" onClick="reply_click(this.id)" data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
   							
   							<div id="comment0_form" class="reply-form">
-								<form method="post" th:action="@{'/title-page/' + ${post.id}}" th:object="${futureComment}" class="reply-js">
+								<form method="post" th:action="@{'/title-page/' + ${post.id}}" th:object="${futureComment}" enctype="multipart/form-data" class="reply-js">
 									<section class="reply-area">
 										<div class="reply-area-inside">
 											<textarea th:field="*{content}" class="reply-input" placeholder="Ваш текст"></textarea>
 										</div>
 									</section>
 									<button type="submit" class="button-send">Отправить</button>
+                                    <input type="file" name="imageFile" accept="image/*">
 								</form>
 							</div>
   						</div>
@@ -58,12 +59,15 @@
   			<div class="messages">
                 <div class="post-messages" th:each="comment : ${allComments}">
                     <div class="post-header">
-                        <p class="name-user" th:text="${comment.getAuthor()}">Имя пользователя</p>
-                        <p class="post-date" th:text="${comment.getCreatedAt()}"><i>27.10.2022 16.15.46</i></p>
+                        <p class="name-user" th:text="${comment.getAuthor()}"></p>
+                        <p class="post-date" th:text="${comment.getCreatedAt()}"><i></i></p>
                     </div>
                     <div class="post-body">
-                        <p th:text="${comment.getContent()}">Не следует, однако, забывать о том, что постоянное информационно-техническое обеспечение нашей деятельности играет важную роль в формировании позиций, занимаемых участниками в отношении поставленных задач? Задача организации, в особенности же курс на социально-ориентированный национальный проект способствует подготовке и реализации экономической целесообразности принимаемых решений. Таким образом, консультация с профессионалами из IT требует от нас анализа модели развития!</p>
-                    </div>
+                        <p th:text="${comment.getContent()}"></p>
+						<div th:if="${comment.base64Image} != ''">
+							<img class="comment-body-image" th:src="'data:image/jpg;base64, ' + ${comment.getBase64Image()}"/>
+						</div>
+					</div>
                     <hr>
                     <div class="post-footer">
                         <div class="comments">
@@ -72,14 +76,15 @@
                                 <button th:id="'comment' + ${comment.getId()}" onClick="reply_click(this.id)"  data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
 
                                 <div class="reply-form">
-                                    <form method="post" th:action="@{'/title-page/' + ${post.id} + '/reply/' + ${comment.getAuthor()}}" th:object="${futureComment}" class="reply-js">
+                                    <form method="post" th:action="@{'/title-page/' + ${post.id} + '/reply/' + ${comment.getAuthor()}}" th:object="${futureComment}" enctype="multipart/form-data" class="reply-js">
                                         <section class="reply-area">
                                             <div class="reply-area-inside">
                                                 <textarea th:text="${comment.getAuthor()} + ','" class="id-area" readonly>>>id пользователя</textarea>
                                                 <textarea th:field="*{content}" class="reply-input"></textarea>
                                             </div>
                                         </section>
-                                        <button type="submit" class="button-send">Отправить</button>
+										<button type="submit" class="button-send">Отправить</button>
+                                        <input type="file" name="imageFile" accept="image/*">
                                     </form>
                                 </div>
                             </div>
@@ -97,13 +102,14 @@
   				</button>
   						
   				<div class="reply-form-post">
-					<form method="post" th:action="@{'/title-page/' + ${post.id}}" th:object="${futureComment}" class="reply-js-post">
+					<form method="post" th:action="@{'/title-page/' + ${post.id}}" th:object="${futureComment}" enctype="multipart/form-data" class="reply-js-post">
 						<section class="reply-area">
 							<div class="reply-area-inside">
 								<textarea th:field="*{content}" class="reply-input"></textarea>
 							</div>
 						</section>
 						<button type="submit" class="button-send-post">Отправить</button>
+                        <input type="file" name="imageFile" accept="image/*">
 					</form>
 				</div>
   			</div>
