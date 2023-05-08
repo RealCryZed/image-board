@@ -5,14 +5,15 @@ import com.example.imageboard.model.Comment;
 import com.example.imageboard.model.Post;
 import com.example.imageboard.repository.CommentRepository;
 import com.example.imageboard.repository.PostRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.io.IOException;
 import java.util.List;
 
+@Slf4j
 @Service
 public class PostService {
 
@@ -30,6 +31,14 @@ public class PostService {
 
             for (int i = 0, j = list.size() - 1; i < j; i++) {
                 list.add(i, list.remove(j));
+            }
+
+            for (int i = 0; i < list.size(); i++) {
+                Comment comment = list.get(i);
+                if (comment.getImage() != null) {
+                    comment.setBase64Image(ImageProcessor.getBase64Image(comment.getImage()));
+                    list.set(i, comment);
+                }
             }
             post.setComments(list);
         }
