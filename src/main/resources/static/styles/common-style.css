@@ -135,3 +135,82 @@ a {
     font-weight: 600;
     margin-top: 5px;
 }
+
+.report-overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.8);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.show-report {
+    text-align: center;
+    visibility: visible;
+    opacity: 1;
+}
+
+.report-wrapper {
+    margin: 70px auto;
+    padding: 20px;
+    background: #e7e7e7;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+.report-wrapper h3 {
+    text-align: center;
+    margin-top: 0;
+    color: #333;
+}
+
+/*.report-wrapper .report-button-back {*/
+/*    position: absolute;*/
+/*    top: 20px;*/
+/*    right: 30px;*/
+/*    transition: all 200ms;*/
+/*    font-size: 30px;*/
+/*    font-weight: bold;*/
+/*    text-decoration: none;*/
+/*    color: #333;*/
+/*}*/
+
+.report-button {
+    background-color: #413b3b;
+    color: #fff;
+    padding: 15px 50px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    transition: 400ms;
+}
+
+.report-button:hover {
+    background-color: #666666;
+}
+
+.report-button-back {
+    background-color: #bababa;
+    color: #ffffff;
+    padding: 15px 50px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    transition: 400ms;
+}
+
+.report-button-back:hover {
+    background-color: #9d9d9d;
+}
