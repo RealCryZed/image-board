@@ -37,8 +37,7 @@
 
   					<div class="comments"> 
   						<div class="comment">
-<!--  							<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="/../img/spam-icon.svg"></button>-->
-  							<button data-tooltip="Ответить" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
+							<button data-tooltip="Ответить" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
 
 							<div id="comment0_form" class="reply-form">
 								<form method="post" th:action="@{'/home/title-page/' + ${post.id}}" th:object="${futureComment}" enctype="multipart/form-data" class="reply-js">
@@ -75,6 +74,18 @@
   							<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="/../img/spam-icon.svg"></button>
   							<button data-tooltip="Ответить" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
 
+							<div class="report-overlay">
+								<div class="report-wrapper">
+									<h3>Вы точно хотите пожаловаться на этот комментарий?</h3>
+									<div class="report-popup">
+										<form method="post" th:action="@{'/report/' + ${comment.id}}" class="report-form">
+											<button type="submit" class="report-button">Пожаловаться</button>
+											<button type="button" class="report-button-back">Вернуться</button>
+										</form>
+									</div>
+								</div>
+							</div>
+
 							<div class="reply-form">
 								<form method="post" th:action="@{'/home/title-page/' + ${post.id} + '/reply/' + ${comment.getAuthor()}}" th:object="${futureComment}" enctype="multipart/form-data" class="reply-js">
 									<section class="reply-area">
@@ -93,10 +104,38 @@
   			</div>
   			<hr class="hr-post">
   		</div>
-
-
-  		
 	</div>
+
+	<script type="text/javascript">
+		const reportButtons = document.querySelectorAll('.spam-button');
+		const reportButtonsBack = document.querySelectorAll('.report-button-back');
+
+		reportButtons.forEach(button => {
+			button.addEventListener('click', () => {
+				const comment = button.closest('.comment');
+				const replyForm = comment.querySelector('.report-overlay');
+
+				if (replyForm.classList.contains('show-report')) {
+					replyForm.classList.remove('show-report');
+				} else {
+					replyForm.classList.add('show-report');
+				}
+			});
+		});
+
+		reportButtonsBack.forEach(button => {
+			button.addEventListener('click', () => {
+				const comment = button.closest('.comment');
+				const replyForm = comment.querySelector('.report-overlay');
+
+				if (replyForm.classList.contains('show-report')) {
+					replyForm.classList.remove('show-report');
+				} else {
+					replyForm.classList.add('show-report');
+				}
+			});
+		});
+	</script>
 
   	<script type="text/javascript">
 		const replyButtons = document.querySelectorAll('.reply-btn');

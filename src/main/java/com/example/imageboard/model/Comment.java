@@ -59,8 +59,6 @@ public class Comment {
                 ", author='" + author + '\'' +
                 ", replyToNickname='" + replyToNickname + '\'' +
                 ", content='" + content + '\'' +
-                ", byte[]='" + Arrays.toString(image) + '\'' +
-                ", base64Image='" + base64Image + '\'' +
                 ", post_id=" + post_id +
                 ", createdAt=" + createdAt +
                 '}';
