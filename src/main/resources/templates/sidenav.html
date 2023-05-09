@@ -16,12 +16,12 @@
   			<input type="text" placeholder="Искать здесь...">
   			<button type="submit"><img class="search-icon" src="/../img/search-icon.png"></button>
 		</form>
-<!--		<div th:each="post : ${post}">-->
-<!--			<a th:href="@{'/title-page/' + ${post.id}}"></a>-->
-<!--		</div>-->
-		<a th:href="@{title-page/#}">Title 1</a>
-		<a th:href="@{title-page/#}">Title 2</a>
-		<a th:href="@{title-page/#}">Title 3</a>
+
+		<div th:each="post : ${posts}">
+			<div class="sidebar-post">
+				<a th:href="@{'/title-page/' + ${post.getId()}}" th:text="${post.getArticle()}"></a>
+			</div>
+		</div>
 
 		<a th:href="@{login}"><img class="entrance-icon" src="/../img/entrance_icon.png"></a>
 		<a th:href="@{login}" class="entrance">ВХОД</a>
