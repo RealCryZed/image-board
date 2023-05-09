@@ -34,8 +34,8 @@
 
   					<div class="comments"> 
   						<div class="comment">
-  							<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="/../img/spam-icon.svg"></button>
-  							<button id="comment0" onClick="reply_click(this.id)" data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
+<!--  							<button  data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="/../img/spam-icon.svg"></button>-->
+  							<button id="comment0" onClick="reply_click(this.id)" data-tooltip="Ответить" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
   							
   							<div id="comment0_form" class="reply-form">
 								<form method="post" th:action="@{'/title-page/' + ${post.id}}" th:object="${futureComment}" enctype="multipart/form-data" class="reply-js">
@@ -72,8 +72,8 @@
                     <div class="post-footer">
                         <div class="comments">
                             <div class="comment">
-                                <button data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="/../img/spam-icon.svg"></button>
-                                <button th:id="'comment' + ${comment.getId()}" onClick="reply_click(this.id)"  data-tooltip="Переслать" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
+<!--                                <button data-tooltip="Пожаловаться" class="spam-button"><img class="footer-icons" src="/../img/spam-icon.svg"></button>-->
+                                <button th:id="'comment' + ${comment.getId()}" onClick="reply_click(this.id)"  data-tooltip="Ответить" class="reply-btn"><img class="footer-icons" src="/../img/send-icon.svg"></button>
 
                                 <div class="reply-form">
                                     <form method="post" th:action="@{'/title-page/' + ${post.id} + '/reply/' + ${comment.getAuthor()}}" th:object="${futureComment}" enctype="multipart/form-data" class="reply-js">

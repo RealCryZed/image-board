@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -43,6 +44,10 @@ public class PostService {
             post.setComments(list);
         }
         return posts;
+    }
+
+    public List<Post> find10Posts() {
+        return postRepository.findAll().stream().limit(10).collect(Collectors.toList());
     }
 
     @Transactional

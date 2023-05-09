@@ -13,11 +13,11 @@
 	<div th:fragment="sidenav" class="sidenav">
 		<a th:href="@{/}"><img class="sidebar-logo" src="/../img/omgtu_logo.png"></a>
 		<form>
-  			<input type="text" placeholder="Искать здесь...">
+  			<input type="text" placeholder="Поиск">
   			<button type="submit"><img class="search-icon" src="/../img/search-icon.png"></button>
 		</form>
 
-		<div th:each="post : ${posts}">
+		<div th:each="post : ${sidebarPosts}">
 			<div class="sidebar-post">
 				<a th:href="@{'/title-page/' + ${post.getId()}}" th:text="${post.getArticle()}"></a>
 			</div>

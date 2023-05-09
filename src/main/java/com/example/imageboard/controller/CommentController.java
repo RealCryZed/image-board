@@ -1,4 +1,4 @@
-package com.example.imageboard.controller.rest;
+package com.example.imageboard.controller;
 
 import com.example.imageboard.model.Comment;
 import com.example.imageboard.service.CommentService;
