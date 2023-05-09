@@ -1,4 +1,4 @@
-package com.example.imageboard.controller;
+package com.example.imageboard.controller.rest;
 
 import com.example.imageboard.service.PostService;
 import com.example.imageboard.model.Post;
