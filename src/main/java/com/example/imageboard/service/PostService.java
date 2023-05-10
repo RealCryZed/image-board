@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -55,6 +54,11 @@ public class PostService {
         Post foundPost = postRepository.getById(postId);
         foundPost.setBase64Image(ImageProcessor.getBase64Image(foundPost.getImage()));
         return foundPost;
+    }
+
+    @Transactional
+    public List<Post> findAllByArticle(String article) {
+        return postRepository.findAllByArticleContainingIgnoreCase(article);
     }
 
     public Post findPostByArticle(String article) {
