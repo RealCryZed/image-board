@@ -2,6 +2,7 @@ package com.example.imageboard.controller;
 
 import com.example.imageboard.model.Comment;
 import com.example.imageboard.model.Post;
+import com.example.imageboard.model.User;
 import com.example.imageboard.service.CommentService;
 import com.example.imageboard.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,7 @@ public class PageController {
     @GetMapping("/register")
     public ModelAndView getRegisterPage(ModelAndView modelAndView) {
         modelAndView.addObject("sidebarPosts", postService.find10Posts());
+        modelAndView.addObject("user", new User());
         modelAndView.setViewName("create-account-page");
         return modelAndView;
     }
