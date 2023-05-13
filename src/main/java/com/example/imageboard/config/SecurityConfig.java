@@ -1,6 +1,8 @@
 package com.example.imageboard.config;
 
+import com.example.imageboard.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,23 +18,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Qualifier("myUserDetailsService")
     @Autowired
-    private UserDetailsService userDetailsService;
+    private MyUserDetailsService userDetailsService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
-
-        auth
-                .userDetailsService(userDetailsService)
+        auth.userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder);
-
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-//                .antMatchers("/my-profile", "/my-profile/**", "/admin", "/admin/**").hasAnyAuthority("ADMIN", "USER")
+                .antMatchers("/my-profile", "/my-profile/**", "/admin", "/admin/**").hasAnyAuthority("USER")
                 .antMatchers("/", "/**").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable()

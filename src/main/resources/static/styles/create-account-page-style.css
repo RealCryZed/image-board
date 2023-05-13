@@ -80,7 +80,10 @@ a:hover {
 
 .to-entry {
     position: absolute;
+    /*
     top: 190px;
+     */
+    top: 135px;
     left: 350px;
     font-size: 18px;
     color: #06C895;
