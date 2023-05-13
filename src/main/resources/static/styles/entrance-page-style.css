@@ -75,8 +75,9 @@ a:hover {
 
 .create-account {
     position: absolute;
-    top: 135px;
-    left: 230px;
+    /*top: 135px;*/
+    /*left: 230px;*/
+    margin-top: 28px;
     font-size: 18px;
     color: #06C895;
     width: 200px;
