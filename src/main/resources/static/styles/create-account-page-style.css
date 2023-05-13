@@ -83,8 +83,9 @@ a:hover {
     /*
     top: 190px;
      */
-    top: 135px;
-    left: 350px;
+    /*top: 135px;*/
+    /*left: 350px;*/
+    margin: 28px 0px 0px 70px;
     font-size: 18px;
     color: #06C895;
 }

@@ -49,7 +49,7 @@ public class PageController {
     public ModelAndView getRegisterPage(ModelAndView modelAndView) {
         modelAndView.addObject("sidebarPosts", postService.find10Posts());
         modelAndView.addObject("user", new User());
-        modelAndView.setViewName("create-account-page");
+        modelAndView.setViewName("register");
         return modelAndView;
     }
 

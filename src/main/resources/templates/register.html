@@ -23,7 +23,7 @@
 					th:errors="*{username}">Name Error
 				</h5>
 			</div>
-			<input th:field="*{username}" type="text" name="login" placeholder="Логин">
+			<input th:field="*{username}" type="text" name="username" placeholder="Имя пользователя">
   			<br>
 			<div th:if="${#fields.hasErrors('password')}">
 				<h5 class="validationError"
@@ -32,8 +32,6 @@
 			</div>
   			<input th:field="*{password}" type="password" name="password" placeholder="Пароль">
   			<br>
-<!--  			<input type="password" name="password" placeholder="Пароль (повторно)">-->
-<!--  			<br>-->
   			<button type="submit"><img class="entrance-icon-white" src="/../img/entrance-icon-white.png">Создать аккаунт</button>
   			<a class="to-entry" th:href="@{/login}">Войти</a>
   		</form>
