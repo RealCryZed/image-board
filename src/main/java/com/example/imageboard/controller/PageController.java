@@ -63,4 +63,23 @@ public class PageController {
 
         return modelAndView;
     }
+
+    @GetMapping("/search")
+    public ModelAndView getSearchPage(ModelAndView modelAndView, String keyword) {
+        modelAndView.addObject("keyword", keyword);
+
+        List<Post> posts;
+        if (keyword != null) {
+            posts = postService.findAllByArticle(keyword);
+            log.info("got " + posts.size() + " posts with article contains " + keyword);
+        } else {
+            posts = postService.findAll();
+            log.info("got all posts");
+        }
+        modelAndView.addObject("posts", posts);
+        modelAndView.addObject("sidebarPosts", postService.find10Posts());
+        modelAndView.setViewName("search-page");
+
+        return modelAndView;
+    }
 }

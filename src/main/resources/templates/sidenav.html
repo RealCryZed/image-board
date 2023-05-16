@@ -12,8 +12,9 @@
 <body>
 	<div th:fragment="sidenav" class="sidenav">
 		<a th:href="@{/}"><img class="sidebar-logo" src="/../img/omgtu_logo.png"></a>
-		<form>
-  			<input type="text" placeholder="Поиск">
+
+		<form method="get" th:action="@{'/search'}">
+  			<input type="text" name="keyword" th:value="${keyword}" placeholder="Поиск">
   			<button type="submit"><img class="search-icon" src="/../img/search-icon.png"></button>
 		</form>
 

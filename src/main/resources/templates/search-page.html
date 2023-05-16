@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>OmGTUchan</title>
+    <link rel="stylesheet" type="text/css" href="/../styles/main-page-style.css">
+    <link rel="stylesheet" type="text/css" href="/../styles/common-style.css">
+    <link type="image/x-icon" href="/../img/omgtu_logo_min.ico" rel="shortcut icon">
+</head>
+<body>
+<div th:include="sidenav :: sidenav" class="sidenav"></div>
+
+<div class="main">
+    <div class="headbar">
+        <a th:href="@{/}"><img class="main-logo" src="/../img/omgtu_logo_min.png"></a>
+    </div>
+    <p th:text="'Результаты поиска по запросу ' + ${keyword}" class="headbar-title"></p><br>
+
+    <div class="block-post" th:each="post : ${posts}">
+        <a th:href="@{'/title-page/' + ${post.id}}">
+            <div class="post-main" style="margin: auto">
+
+                <div class="post-header">
+                    <p th:text="${post.getAuthorName()}" class="name-user"></p>
+                    <a style="display: block; margin-block-start: 1em;
+					margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-size: x-large;
+					font-weight: bold;" th:text="${post.getArticle()}"></a>
+                    <p th:text="${post.getCreatedAt()}" class="post-date"><i></i></p>
+                </div>
+
+                <div class="post-body">
+                    <p th:text="${post.getContent()}"></p>
+                </div>
+                <br>
+            </div>
+            <br>
+        </a>
+    </div>
+
+</div>
+</body>
+</html>
