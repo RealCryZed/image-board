@@ -19,24 +19,23 @@
     <p th:text="'Результаты поиска по запросу ' + ${keyword}" class="headbar-title"></p><br>
 
     <div class="block-post" th:each="post : ${posts}">
-        <a th:href="@{'/title-page/' + ${post.id}}">
-            <div class="post-main" style="margin: auto">
-
+        <div class="post-main" style="margin: auto">
+            <a th:href="@{'/title-page/' + ${post.id}}">
                 <div class="post-header">
                     <p th:text="${post.getAuthorName()}" class="name-user"></p>
-                    <a style="display: block; margin-block-start: 1em;
-					margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-size: x-large;
-					font-weight: bold;" th:text="${post.getArticle()}"></a>
                     <p th:text="${post.getCreatedAt()}" class="post-date"><i></i></p>
                 </div>
 
                 <div class="post-body">
+                    <p style="display: block; text-align: center; margin-block-start: 1em;
+                    margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-size: x-large;
+                    font-weight: bold;" th:text="${post.getArticle()}"></p>
                     <p th:text="${post.getContent()}"></p>
+                    <br>
                 </div>
-                <br>
-            </div>
-            <br>
-        </a>
+            </a>
+        </div>
+        <br>
     </div>
 
 </div>
