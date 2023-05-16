@@ -17,13 +17,19 @@
   			<p class="headbar-title">Вход</p>
   		</div>
 
-  		<form>
-  			<input type="text" name="login" placeholder="Логин">
+  		<form method="post" th:action="@{/login}">
+			<div th:if="${(#httpServletRequest.getParameter('error') != null) and (#httpServletRequest.getParameter('error') == 'true')}">
+				<h5 class="validationError">
+					Username and\or password is incorrect.
+				</h5>
+			</div>
+  			<input type="text" name="username" placeholder="Имя пользователя">
   			<br>
   			<input type="password" name="password" placeholder="Пароль">
   			<br>
-  			<button type="submit"><img class="entrance-icon-white" src="/../img/entrance-icon-white.png">Войти</button>
-  			<a class="create-account" th:href="@{/register}">Создать аккаунт</a>
+			<button type="submit" name="login"><img class="entrance-icon-white" src="/../img/entrance-icon-white.png">Войти</button>
+			<input style="visibility: hidden; position: absolute;" type="checkbox" class="input-place" checked name="remember-me"/>
+			<a class="create-account" th:href="@{/register}">Создать аккаунт</a>
   		</form>
 
 
