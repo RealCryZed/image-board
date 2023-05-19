@@ -1,6 +1,7 @@
 package com.example.imageboard.service;
 
 import com.example.imageboard.function.ImageProcessor;
+import com.example.imageboard.function.WordFiltering;
 import com.example.imageboard.model.Comment;
 import com.example.imageboard.model.Post;
 import com.example.imageboard.repository.CommentRepository;
@@ -62,6 +63,8 @@ public class CommentService {
                 e.printStackTrace();
             }
         }
+
+        if (WordFiltering.containsBanWord(comment.getContent())) return null;
 
         tempComment.setPost(post);
         tempComment.setPost_id(post.getId());
